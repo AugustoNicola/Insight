@@ -11,6 +11,7 @@ class Categoria extends Model
     
     const CREATED_AT = "fecha_creacion";
     const UPDATED_AT = null;
+    protected $guarded = [];
     
     # las publicaciones que pertenecen a esta categoria
     public function publicaciones()
@@ -20,6 +21,6 @@ class Categoria extends Model
             "categoria_publicacion",
             "categoria_id",
             "publicacion_id"
-        );
+        )->using(CategoriaPublicacion::class);
     }
 }

@@ -12,6 +12,19 @@ class Publicacion extends Model
     protected $table = "publicaciones";
     const CREATED_AT = "fecha_creacion";
     const UPDATED_AT = "fecha_actualizacion";
+    protected $guarded = [];
+    
+    # le usuarie que escribio la publicacion
+    public function autore()
+    {
+        return $this->belongsTo(Usuarie::class, "usuarie_id");
+    }
+    
+    # los comentarios que tiene esta publicacion
+    public function comentarios()
+    {
+        return $this->hasMany(Comentario::class, "publicacion_id");
+    }
     
     # las categorias a las que pertenece esta publicacion
     public function categorias()
@@ -21,6 +34,17 @@ class Publicacion extends Model
             "categoria_publicacion",
             "publicacion_id",
             "categoria_id"
-        );
+        )->using(CategoriaPublicacion::class);
+    }
+    
+    # las reacciones (me gusta, guardar) que tiene esta publicacion
+    public function reacciones()
+    {
+        return $this->belongsToMany(
+            Usuarie::class,
+            "reacciones",
+            "publicacion_id",
+            "usuarie_id"
+        )->using(Reaccion::class);
     }
 }

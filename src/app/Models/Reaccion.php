@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
 
-class CategoriaPublicacion extends Pivot
+class Reaccion extends Pivot
 { 
-    protected $table = "categoria_publicacion";
+    protected $table = "reacciones";
     public $timestamps = false;
 }
