@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get("/", function () {
     return view('welcome');
 });
+
+Route::post("/registrarse", "ControladorUsuarie@registro");
+Route::get("/entrar", "ControladorUsuarie@formInicioSesion");
+Route::post("/entrar", "ControladorUsuarie@inicioSesion");
