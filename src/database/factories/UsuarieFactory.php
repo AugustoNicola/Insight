@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 
 class UsuarieFactory extends Factory
 {
@@ -10,7 +11,7 @@ class UsuarieFactory extends Factory
     {
         return [
             "nombre" => $this->faker->name(),
-            "contrasena" => $this->faker->password(6, 10)
+            "contrasena" => Hash::make($this->faker->word())
         ];
     }
 }
