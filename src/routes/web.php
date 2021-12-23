@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers;
-
+use App\Http\Controllers\ControladorUsuarie;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +18,6 @@ Route::get("/", function () {
     return view('welcome');
 });
 
-Route::post("/registrarse", "ControladorUsuarie@registro");
-Route::get("/entrar", "ControladorUsuarie@formInicioSesion");
-Route::post("/entrar", "ControladorUsuarie@inicioSesion");
+Route::post("/registrarse", [ControladorUsuarie::class, "registrarse"]);
+Route::get("/entrar", [ControladorUsuarie::class, "formularioEntrar"]);
+Route::post("/entrar", [ControladorUsuarie::class, "entrar"]);
