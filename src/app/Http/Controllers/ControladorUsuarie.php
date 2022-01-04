@@ -6,9 +6,61 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
+use App\Models\Usuarie;
+
 class ControladorUsuarie extends Controller
 {
-    public function formularioEntrar()
+    public function vistaRegistrarse()
+    {
+        return view("registrarse");
+    }
+
+    public function registrarse(Request $request)
+    {
+        $validador = Validator::make(
+            $request->only(["nombre", "contrasena", "contrasena_confirmation", "imagen"]),
+            [
+                "nombre" => "required|max:100",
+                "contrasena" => "required|between:3,40|confirmed",
+                "imagen" => "nullable|file|image|dimensions:min_width=100,min_height=100"
+            ],
+            [
+                "nombre.required" => "El campo nombre de usuarie es obligatorio.",
+                "nombre.max" => "El nombre de usuarie no puede ser mayor de :max caracteres.",
+                "contrasena.required" => "El campo contraseña es obligatorio.",
+                "contrasena.between" => "El campo contraseña debe tener entre :min y :max caracteres.",
+                "contrasena.confirmed" => "Las contraseñas no coinciden.",
+                "imagen.file" => "La imagen debe ser un archivo.",
+                "imagen.image" => "El archivo subido debe ser una imagen.",
+                "imagen.dimensions" => "La imagen subida es demasiado pequeña."
+            ]
+        );
+
+        if ($validador->fails()) {
+            // ? campos invalidos
+            return back(303)->withErrors($validador)->withInput(); // 303: See Other
+        }
+
+        // * campos validos
+        $camposValidados = $validador->validated();
+
+        $usuarieCreade = new Usuarie;
+        $usuarieCreade->nombre = $camposValidados["nombre"];
+        $usuarieCreade->contrasena = $camposValidados["contrasena"];
+
+        if ($request->hasFile("imagen")) {
+            // # imagen cargada
+            $request->file("imagen")->store("/public/usuaries"); // /storage/app/public/usuaries/img.xyz
+            $usuarieCreade->imagen = $request->file("imagen")->hashName();
+        }
+
+        $usuarieCreade->save(); // cargamos usuarie a la BBDD
+
+        Auth::login($usuarieCreade); // iniciamos sesion como nueve usuarie
+        return redirect("/publicaciones", 302); // 302: Found
+    }
+
+    public function vistaEntrar()
     {
         return view("entrar");
     }

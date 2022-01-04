@@ -18,6 +18,9 @@ Route::get("/", function () {
     return view('welcome');
 });
 
+//* =========== Usuaries ===========
+Route::get("/registrarse", [ControladorUsuarie::class, "vistaRegistrarse"]);
 Route::post("/registrarse", [ControladorUsuarie::class, "registrarse"]);
-Route::get("/entrar", [ControladorUsuarie::class, "formularioEntrar"]);
+
+Route::get("/entrar", [ControladorUsuarie::class, "vistaEntrar"]);
 Route::post("/entrar", [ControladorUsuarie::class, "entrar"]);
