@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ControladorUsuarie;
+use App\Http\Controllers\ControladorCategoria;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,6 @@ Route::post("/registrarse", [ControladorUsuarie::class, "registrarse"]);
 
 Route::get("/entrar", [ControladorUsuarie::class, "vistaEntrar"]);
 Route::post("/entrar", [ControladorUsuarie::class, "entrar"]);
+
+//* =========== Categorias ===========
+Route::get("/categorias", [ControladorCategoria::class, "listarCategorias"]);
