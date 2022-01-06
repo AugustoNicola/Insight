@@ -47,8 +47,7 @@ class UsuarieRutaRegistrarseTest extends TestCase
         $response = $this->from("/registrarse")->post('/registrarse', [
             "nombre" => "Juan",
             "contrasena" => "contra",
-            "contrasena_confirmation" => "contra",
-            "imagen" => null
+            "contrasena_confirmation" => "contra"
         ]);
 
         $usuarieCreado = Usuarie::where("nombre", "Juan")->get()->first();
@@ -205,7 +204,7 @@ class UsuarieRutaRegistrarseTest extends TestCase
         $response->assertStatus(303); // 303: See Other
         $response->assertRedirect("/registrarse");
         $response->assertSessionHasErrors([
-            "imagen" => "La imagen subida es demasiado pequeña.",
+            "imagen" => "La imagen subida es debe medir entre 100x100 y 5000x5000 pixeles.",
         ]);
         $this->assertGuest();
     }

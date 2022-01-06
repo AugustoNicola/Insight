@@ -3,7 +3,7 @@
 @section("titulo", "Iniciar Sesión")
 
 @section('contenido')
-<form method="POST">
+<form method="POST" enctype="multipart/form-data">
 	<h1>Crear Cuenta</h1>
 	
 	<input type="text" name="nombre" id="nombre" placeholder="Nombre de Cuenta">
@@ -12,7 +12,7 @@
 	
 	<div class="contenedor-imagen">
 		<label for="imagen">Imagen de cuenta</label>
-		<input type="file" accept="image/*" name="imagen" id="imagen">
+		<input type="file" name="imagen" id="imagen" />
 		<img id="preview-imagen" />
 	</div>
 	
