@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
 use App\Models\Usuarie;
 
@@ -12,7 +13,7 @@ class ControladorUsuarie extends Controller
 {
     public function vistaRegistrarse()
     {
-        return view("registrarse");
+        return view("paginas.registrarse");
     }
 
     public function registrarse(Request $request)
@@ -46,7 +47,7 @@ class ControladorUsuarie extends Controller
 
         $usuarieCreade = new Usuarie;
         $usuarieCreade->nombre = $camposValidados["nombre"];
-        $usuarieCreade->contrasena = $camposValidados["contrasena"];
+        $usuarieCreade->contrasena = Hash::make($camposValidados["contrasena"]);
 
         if ($request->hasFile("imagen")) {
             // # imagen cargada
@@ -56,13 +57,14 @@ class ControladorUsuarie extends Controller
 
         $usuarieCreade->save(); // cargamos usuarie a la BBDD
 
+        $request->session()->regenerate(); // evitamos session fixation
         Auth::login($usuarieCreade); // iniciamos sesion como nueve usuarie
         return redirect("/publicaciones", 302); // 302: Found
     }
 
     public function vistaEntrar()
     {
-        return view("entrar");
+        return view("paginas.entrar");
     }
 
     public function entrar(Request $request)
