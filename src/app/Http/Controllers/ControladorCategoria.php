@@ -16,4 +16,23 @@ class ControladorCategoria extends Controller
             "categorias" => $categorias
         ]);
     }
+
+    public function informacionCategoria($id)
+    {
+        $categoria = Models\Categoria::with("publicaciones")
+            ->withCount("publicaciones")
+            ->where("id", $id)
+            ->first();
+
+        if ($categoria === null) {
+            // ? categoria no encontrada en la BBDD
+            return abort(404);
+        }
+
+        // * categoria encontrada! Devolviendo informacion a la view
+
+        return view("paginas.categoria", [
+            "categoria" => $categoria
+        ]);
+    }
 }

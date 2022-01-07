@@ -20,11 +20,12 @@ Route::get("/", function () {
 });
 
 //* =========== Usuaries ===========
-Route::get("/registrarse", [ControladorUsuarie::class, "vistaRegistrarse"]);
+Route::get("/registrarse", [ControladorUsuarie::class, "vistaRegistrarse"])->name("registrarse");
 Route::post("/registrarse", [ControladorUsuarie::class, "registrarse"]);
 
-Route::get("/entrar", [ControladorUsuarie::class, "vistaEntrar"]);
+Route::get("/entrar", [ControladorUsuarie::class, "vistaEntrar"])->name("entrar");
 Route::post("/entrar", [ControladorUsuarie::class, "entrar"]);
 
 //* =========== Categorias ===========
-Route::get("/categorias", [ControladorCategoria::class, "listarCategorias"]);
+Route::get("/categorias", [ControladorCategoria::class, "listarCategorias"])->name("categorias");
+Route::get("/categorias/{id}", [ControladorCategoria::class, "informacionCategoria"])->name("categoria");
