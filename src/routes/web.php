@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ControladorUsuarie;
 use App\Http\Controllers\ControladorCategoria;
+use App\Http\Controllers\ControladorPublicacion;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,6 @@ Route::post("/entrar", [ControladorUsuarie::class, "entrar"]);
 //* =========== Categorias ===========
 Route::get("/categorias", [ControladorCategoria::class, "listarCategorias"])->name("categorias");
 Route::get("/categorias/{id}", [ControladorCategoria::class, "informacionCategoria"])->name("categoria");
+
+//* =========== Publicaciones ===========
+Route::get("/publicaciones", [ControladorPublicacion::class, "listarPublicaciones"])->name("publicaciones");
