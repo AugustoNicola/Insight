@@ -18,31 +18,9 @@
 	@if(count($publicaciones) > 0)
 	
 	<div class="publicaciones">
-		
 		@foreach($publicaciones as $publicacion)
-		<div class="publicacion">
-			<h4 class="titulo">{{$publicacion->titulo}}</h4>
-			<div class="categorias">
-				@foreach($publicacion->categorias()->get() as $categoria)
-				<a class="categoria" href="/categorias/{{$categoria->id}}">#{{$categoria->nombre}}</a>
-				@endforeach
-			</div>
-			<p class="autore">por {{$publicacion->autore()->first()->nombre}}</p>
-			<p class="reacciones">
-				<?=
-					array_reduce(
-						$publicacion
-							->reacciones()->get() //lista con todas las reacciones
-							->pluck("pivot.relacion")->toArray() // filtramos solo a tipo de reaccion ("me gusta" | "guardar")
-					, function($valorPrevio, $reaccion) {
-						// contamos cuantos "me_gusta" hay
-						return $reaccion == "me_gusta" ? $valorPrevio + 1 : $valorPrevio;
-					}, 0)
-				?> me gusta
-			</p>
-		</div>
+			<x-publicacion :publicacion="$publicacion" />
 		@endforeach
-		
 	</div>
 	
 	@else
