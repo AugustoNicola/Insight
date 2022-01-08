@@ -8,12 +8,19 @@ use App\Models;
 
 class ControladorPublicacion extends Controller
 {
-    public function listarPublicaciones()
+    public function listarPublicaciones(Request $request)
     {
-        $publicaciones = Models\Publicacion::all();
+        $categoriasDestacadas = Models\Categoria::query()->take(5)->get();
+
+        $publicaciones = Models\Publicacion::query();
+        if ($request->query("titulo")) {
+            $publicaciones = $publicaciones->where("titulo", "like", $request->query("titulo") . "%");
+        }
+        $publicaciones = $publicaciones->get();
 
         return view("paginas.publicaciones", [
-            "publicaciones" => $publicaciones
+            "publicaciones" => $publicaciones,
+            "categoriasDestacadas" => $categoriasDestacadas
         ]);
     }
 }

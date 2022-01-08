@@ -3,6 +3,15 @@
 @section("titulo", "Publicaciones")
 
 @section('contenido')
+<aside class="filtros">
+	<form method="GET">
+		<label for="titulo">Buscar por título:</label>
+		<input type="text" name="titulo" id="titulo" class="titulo">
+		
+		<button type="submit">Aplicar filtro</button>
+	</form>
+</aside>
+
 <main>
 	<h1>Explorar Publicaciones</h1>
 	
@@ -15,10 +24,10 @@
 			<h4 class="titulo">{{$publicacion->titulo}}</h4>
 			<div class="categorias">
 				@foreach($publicacion->categorias()->get() as $categoria)
-				<p class="categoria">#{{$categoria->nombre}}</p>
+				<a class="categoria" href="/categorias/{{$categoria->id}}">#{{$categoria->nombre}}</a>
 				@endforeach
 			</div>
-			<div class="autore">por {{$publicacion->autore()->first()->nombre}}</div>
+			<p class="autore">por {{$publicacion->autore()->first()->nombre}}</p>
 			<p class="reacciones">
 				<?=
 					array_reduce(
@@ -40,5 +49,18 @@
 	<h2>No se han encontrado publicaciones.</h2>
 	@endif
 </main>
+
+<aside class="categorias-destacadas">
+	<h2>Categorías destacadas</h2>
+	
+	@if(count($categoriasDestacadas) > 0)
+	@foreach($categoriasDestacadas as $categoria)
+	<a class="categoria" href="/categorias/{{$categoria->id}}">#{{$categoria->nombre}}</a>
+	@endforeach
+	
+	@else
+	<h3>No se han encontrado categorías.</h2>
+	@endif
+</aside>
 @endsection
 
