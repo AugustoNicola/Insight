@@ -3,7 +3,6 @@
 namespace Tests\Feature\Usuaries;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-//use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 use Illuminate\Support\Facades\Hash;
