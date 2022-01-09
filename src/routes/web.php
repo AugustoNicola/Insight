@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ControladorUsuarie;
 use App\Http\Controllers\ControladorCategoria;
 use App\Http\Controllers\ControladorPublicacion;
+use App\Http\Controllers\ControladorComentario;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +35,6 @@ Route::get("/categorias/{id}", [ControladorCategoria::class, "informacionCategor
 //* =========== Publicaciones ===========
 Route::get("/publicaciones", [ControladorPublicacion::class, "listarPublicaciones"])->name("publicaciones");
 Route::get("/publicaciones/{id}", [ControladorPublicacion::class, "informacionPublicacion"])->name("publicacion");
+
+//* =========== Comentarios ===========
+Route::post("/comentario", [ControladorComentario::class, "publicarComentario"])->name("comentario");

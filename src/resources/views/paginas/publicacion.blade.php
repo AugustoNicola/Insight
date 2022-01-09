@@ -46,9 +46,9 @@
 				{{-- TODO imagen usuarie --}}
 			</div>
 			
-			<form action="/comentarios" method="POST">
+			<form action="/comentario" method="POST">
 				@csrf
-				<input type="hidden" name="publicacion" value="{{$publicacion->id}}">
+				<input type="hidden" name="id" value="{{$publicacion->id}}" />
 				<textarea name="cuerpo" id="cuerpo" placeholder="Escribí tu comentario"></textarea>
 				<button type="submit">Publicar</button>
 			</form>
