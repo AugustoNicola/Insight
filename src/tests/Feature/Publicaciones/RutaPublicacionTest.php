@@ -27,7 +27,7 @@ class RutaPublicacionTest extends TestCase
         Models\Usuarie::factory()->count(2)->create();
 
         $publicacion->categorias()->attach(Models\Categoria::all()->pluck('id')->toArray());
-        $publicacion->reacciones()->attach(Models\Usuarie::all()->random(2)->pluck('id')->toArray(), ["relacion" => "me_gusta"]);
+        $publicacion->reacciones()->attach(Models\Usuarie::all()->pluck('id')->toArray(), ["relacion" => "me_gusta"]);
 
         $response = $this->get("/publicaciones/" . $publicacion->id);
 
@@ -42,7 +42,8 @@ class RutaPublicacionTest extends TestCase
         $response->assertSeeText($publicacion->fecha_creacion->format("d/m/y"));
         $response->assertSeeText("3 me gusta");
         $response->assertSeeText("0 comentarios");
-        $response->assertSeeText($publicacion->cuerpo);
+
+        $response->assertSeeText(explode("\n", $publicacion->cuerpo));
     }
 
     public function test_DeberiaMostrarMensajeComentariosVacio_CuandoNoHayComentariosRelacionados()
@@ -67,7 +68,7 @@ class RutaPublicacionTest extends TestCase
         Models\Categoria::factory()->count(3)->create();
         $publicacion->categorias()->attach(Models\Categoria::all()->pluck('id')->toArray());
 
-        $comentarios = Models\Comentario::factory()->usuarieExistente()->count(3)->create();
+        $comentarios = Models\Comentario::factory()->usuarieExistente()->publicacionExistente()->count(3)->create();
 
         $response = $this->get("/publicaciones/" . $publicacion->id);
 
@@ -79,7 +80,7 @@ class RutaPublicacionTest extends TestCase
         foreach ($comentarios as $comentario) {
             $response->assertSeeText($comentario->usuarie->nombre);
             $response->assertSeeText($comentario->fecha_creacion->format("d/m/y"));
-            $response->assertSeeText($comentario->cuerpo);
+            $response->assertSeeText(explode("\n", $comentario->cuerpo));
         }
     }
 }
