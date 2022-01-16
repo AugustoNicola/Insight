@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 
 use App\Models;
 
@@ -13,10 +12,6 @@ class ControladorComentario extends Controller
 {
     public function publicarComentario(Request $request)
     {
-        Log::debug("Es guest: " . Auth::guest());
-        Log::debug("id: " . $request->input("id"));
-        Log::debug("cuerpo: " . $request->input("cuerpo"));
-
         $validador = Validator::make(
             $request->only(["cuerpo", "id"]),
             [
