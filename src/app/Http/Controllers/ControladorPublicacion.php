@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class ControladorPublicacion extends Controller
 {
@@ -95,5 +96,55 @@ class ControladorPublicacion extends Controller
             "dadoMeGusta" => $dadoMeGusta,
             "dadoGuardar" => $dadoGuardar
         ])->withErrors($errores);
+    }
+
+    public function publicarPublicacion(Request $request)
+    {
+        $validador = Validator::make(
+            $request->only(["titulo", "categorias", "cuerpo", "imagen"]),
+            [
+                "titulo" => "required|between:3,110",
+                "categorias" => "required",
+                "cuerpo" => "required|between:3,2000",
+                "imagen" => "bail|image|mimes:jpg,png,jpeg|max:2048|dimensions:min_width=100,min_height=100,max_width=5000,max_height=5000"
+            ],
+            [
+                "titulo.required" => "El campo titulo es obligatorio.",
+                "titulo.between" => "El campo titulo debe tener entre :min y :max caracteres.",
+
+                "categorias.required" => "Es necesario seleccionar al menos una categoría.",
+
+                "cuerpo.required" => "El campo cuerpo es obligatorio.",
+                "cuerpo.between" => "El campo cuerpo debe tener entre :min y :max caracteres.",
+
+                "imagen.image" => "El archivo subido debe ser una imagen.",
+                "imagen.mimes" => "El archivo subido es de una extensión no soportada.",
+                "imagen.max" => "El archivo subido es demasiado pesado.",
+                "imagen.dimensions" => "La imagen subida es debe medir entre 100x100 y 5000x5000 pixeles."
+            ]
+        );
+
+        if ($validador->fails()) {
+            // ? campos invalidos
+            return back(303)->withErrors($validador)->withInput(); // 303: See Other
+        }
+
+        //* campos validos
+        $camposValidados = $validador->validated();
+
+        $publicacionCreada = new Models\Publicacion;
+        $publicacionCreada->titulo = $camposValidados["titulo"];
+        $publicacionCreada->categorias()->attach($camposValidados["categorias"]);
+        $publicacionCreada->cuerpo = $camposValidados["cuerpo"];
+
+        if ($request->hasFile("imagen")) {
+            // # imagen cargada
+            $request->file("imagen")->store("/public/publicaciones"); // /storage/app/public/publicaciones/img.xyz
+            $publicacionCreada->imagen = $request->file("imagen")->hashName();
+        }
+
+        $publicacionCreada->save(); // cargamos usuarie a la BBDD
+
+        return redirect("/publicaciones/" . $publicacionCreada->id, 302); // 302: Found
     }
 }
