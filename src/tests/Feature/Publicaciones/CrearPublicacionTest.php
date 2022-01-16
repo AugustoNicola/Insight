@@ -35,7 +35,7 @@ class CrearPublicacionTest extends TestCase
             ->from("/escribir")
             ->post("/publicaciones", [
                 "titulo" => $this->faker->sentence(8),
-                "categorias" => $categorias->pluck("nombre"),
+                "categorias" => $categorias->pluck("id"),
                 "cuerpo" => $this->faker->paragraphs(3, true),
                 "imagen" => $archivo
             ]);
@@ -48,7 +48,7 @@ class CrearPublicacionTest extends TestCase
         $this->assertAuthenticatedAs($usuarie);
 
         $response->assertSeeText($publicacionCreada->titulo);
-        $response->assertSeeText($categorias->pluck("nombre"));
+        $response->assertSeeText($categorias->pluck("id"));
         $response->assertSeeText("Por " . $usuarie->nombre);
         $response->assertSeeText($publicacionCreada->fecha_creacion->format("d/m/Y"));
         $response->assertSeeText("0 me gusta");
@@ -76,7 +76,7 @@ class CrearPublicacionTest extends TestCase
             ->from("/escribir")
             ->post("/publicaciones", [
                 "titulo" => $this->faker->sentence(8),
-                "categorias" => $categorias->pluck("nombre"),
+                "categorias" => $categorias->pluck("id"),
                 "cuerpo" => $this->faker->paragraphs(3, true)
             ]);
 
@@ -88,7 +88,7 @@ class CrearPublicacionTest extends TestCase
         $this->assertAuthenticatedAs($usuarie);
 
         $response->assertSeeText($publicacionCreada->titulo);
-        $response->assertSeeText($categorias->pluck("nombre"));
+        $response->assertSeeText($categorias->pluck("id"));
         $response->assertSeeText("Por " . $usuarie->nombre);
         $response->assertSeeText($publicacionCreada->fecha_creacion->format("d/m/Y"));
         $response->assertSeeText("0 me gusta");
@@ -111,7 +111,7 @@ class CrearPublicacionTest extends TestCase
             ->from("/escribir")
             ->post("/publicaciones", [
                 "titulo" => "",
-                "categorias" => $categorias->pluck("nombre"),
+                "categorias" => $categorias->pluck("id"),
                 "cuerpo" => $this->faker->paragraphs(3, true)
             ]);
 
@@ -126,7 +126,7 @@ class CrearPublicacionTest extends TestCase
             ->from("/escribir")
             ->post("/publicaciones", [
                 "titulo" => "12",
-                "categorias" => $categorias->pluck("nombre"),
+                "categorias" => $categorias->pluck("id"),
                 "cuerpo" => $this->faker->paragraphs(3, true)
             ]);
 
@@ -141,7 +141,7 @@ class CrearPublicacionTest extends TestCase
             ->from("/escribir")
             ->post("/publicaciones", [
                 "titulo" => $this->faker->word(200),
-                "categorias" => $categorias->pluck("nombre"),
+                "categorias" => $categorias->pluck("id"),
                 "cuerpo" => $this->faker->paragraphs(3, true)
             ]);
 
@@ -149,6 +149,29 @@ class CrearPublicacionTest extends TestCase
         $responseTituloLargo->assertRedirect("/entrar");
         $responseTituloLargo->assertSessionHasErrors([
             "titulo" => "El campo titulo debe tener entre 3 y 110 caracteres."
+        ]);
+    }
+
+    public function test_DeberiaNegarPublicacion_CuandoCategoriasInvalidas()
+    {
+        // por alguna razon el factory devuelve una clase que el actingAs no puede usar, asi que creamos a le usuarie desde la clase y guardamos a la BBDD
+        $usuarie = new Models\Usuarie([
+            "nombre" => $this->faker->name(),
+            "contrasena" => Hash::make($this->faker->word())
+        ]);
+
+        //# categorias vacias
+        $responseTituloVacio = $this->actingAs($usuarie)
+            ->from("/escribir")
+            ->post("/publicaciones", [
+                "titulo" => $this->faker->sentence(8),
+                "cuerpo" => $this->faker->paragraphs(3, true)
+            ]);
+
+        $responseTituloVacio->assertStatus(303); // 303: See Other
+        $responseTituloVacio->assertRedirect("/entrar");
+        $responseTituloVacio->assertSessionHasErrors([
+            "categorias" => "Es necesario seleccionar al menos una categoría."
         ]);
     }
 
@@ -160,7 +183,7 @@ class CrearPublicacionTest extends TestCase
             ->from("/escribir")
             ->post("/publicaciones", [
                 "titulo" => $this->faker->sentence(8),
-                "categorias" => $categorias->pluck("nombre"),
+                "categorias" => $categorias->pluck("id"),
                 "cuerpo" => $this->faker->paragraphs(3, true)
             ]);
 
@@ -189,7 +212,7 @@ class CrearPublicacionTest extends TestCase
             ->from("/escribir")
             ->post("/publicaciones", [
                 "titulo" => $this->faker->sentence(8),
-                "categorias" => $categorias->pluck("nombre"),
+                "categorias" => $categorias->pluck("id"),
                 "cuerpo" => $this->faker->paragraphs(3, true),
                 "imagen" => $archivoNoImagen
             ]);
@@ -207,7 +230,7 @@ class CrearPublicacionTest extends TestCase
             ->from("/escribir")
             ->post("/publicaciones", [
                 "titulo" => $this->faker->sentence(8),
-                "categorias" => $categorias->pluck("nombre"),
+                "categorias" => $categorias->pluck("id"),
                 "cuerpo" => $this->faker->paragraphs(3, true),
                 "imagen" => $imagenChica
             ]);
@@ -234,7 +257,7 @@ class CrearPublicacionTest extends TestCase
             ->from("/escribir")
             ->post("/publicaciones", [
                 "titulo" => $this->faker->sentence(8),
-                "categorias" => $categorias->pluck("nombre"),
+                "categorias" => $categorias->pluck("id"),
                 "cuerpo" => ""
             ]);
 
@@ -249,7 +272,7 @@ class CrearPublicacionTest extends TestCase
             ->from("/escribir")
             ->post("/publicaciones", [
                 "titulo" => $this->faker->sentence(8),
-                "categorias" => $categorias->pluck("nombre"),
+                "categorias" => $categorias->pluck("id"),
                 "cuerpo" => "12"
             ]);
 
@@ -264,7 +287,7 @@ class CrearPublicacionTest extends TestCase
             ->from("/escribir")
             ->post("/publicaciones", [
                 "titulo" => $this->faker->sentence(8),
-                "categorias" => $categorias->pluck("nombre"),
+                "categorias" => $categorias->pluck("id"),
                 "cuerpo" => $this->faker->words(2000, true)
             ]);
 
