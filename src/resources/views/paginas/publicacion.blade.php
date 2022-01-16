@@ -28,7 +28,7 @@
 			<p>Por {{$publicacion->autore->nombre}}</p>
 		</div>
 		
-		<p class="fecha">{{$publicacion->fecha_creacion->format("d/m/y")}}</p>
+		<p class="fecha">{{$publicacion->fecha_creacion->format("d/m/Y")}}</p>
 	</div>
 	
 	<p id="contador-megusta" data-cantidad="{{$publicacion->cantidad_me_gusta}}">{{$publicacion->cantidad_me_gusta}} me gusta</p>
@@ -73,7 +73,7 @@
 					{{-- TODO imagen usuarie --}}
 				</div>
 				<h4 class="nombre">{{$comentario->usuarie->nombre}}</h4>
-				<span class="fecha">{{$comentario->fecha_creacion->format("d/m/y")}}</span>
+				<span class="fecha">{{$comentario->fecha_creacion->format("d/m/Y")}}</span>
 			</div>
 			
 			<div class="cuerpo">
