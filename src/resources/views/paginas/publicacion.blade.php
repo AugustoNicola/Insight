@@ -4,6 +4,14 @@
 
 @section('contenido')
 
+<aside class="interacciones">
+	@csrf
+	<input type="hidden" name="publicacion-id" id="publicacion-id" value="{{$publicacion->id}}">
+	<button id="boton-megusta" class="{{$dadoMeGusta ? "activado" : ""}}">Me gusta</button>
+	<a href="#comentarios">Comentar</a>
+	<button id="boton-guardar" class="{{$dadoGuardar ? "activado" : ""}}">Guardar</button>
+</aside>
+
 <main class="publicacion">
 	<h1>{{$publicacion->titulo}}</h1>
 	
@@ -23,7 +31,8 @@
 		<p class="fecha">{{$publicacion->fecha_creacion->format("d/m/y")}}</p>
 	</div>
 	
-	<p class="reacciones">{{$publicacion->cantidad_me_gusta}} me gusta * {{$publicacion->comentarios_count}} {{$publicacion->comentarios_count == 1 ? "comentario" : "comentarios"}}</p>
+	<p id="contador-megusta" data-cantidad="{{$publicacion->cantidad_me_gusta}}">{{$publicacion->cantidad_me_gusta}} me gusta</p>
+	<p id="contador-comentarios" data-cantidad="{{$publicacion->comentarios_count}}">{{$publicacion->comentarios_count}} {{$publicacion->comentarios_count == 1 ? "comentario" : "comentarios"}}</p>
 	
 	<div class="portada">
 		{{-- TODO imagen portada --}}
@@ -40,7 +49,7 @@
 	
 	<h2>Comentarios ({{$publicacion->comentarios_count}})</h2>
 	
-	<div class="comentarios">
+	<div id="comentarios">
 		<div class="formulario-comentario">
 			<div class="imagen-usuarie">
 				{{-- TODO imagen usuarie --}}
@@ -86,6 +95,8 @@
 	
 	
 </main>
+
+<script src="{{ asset('js/publicacion.js') }}"></script>
 
 @endsection
 

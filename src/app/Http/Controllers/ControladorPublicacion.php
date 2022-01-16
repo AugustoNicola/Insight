@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models;
+use Illuminate\Support\Facades\Auth;
 
 class ControladorPublicacion extends Controller
 {
@@ -24,7 +25,7 @@ class ControladorPublicacion extends Controller
         ]);
     }
 
-    public function informacionPublicacion($id)
+    public function informacionPublicacion(Request $request, $id)
     {
         $publicacion = Models\Publicacion::with("reacciones")
             ->withCount("comentarios")
@@ -51,8 +52,48 @@ class ControladorPublicacion extends Controller
 
         // * publicacion encontrada! Devolviendo informacion a la view
 
+        //# inyectando errores por query string y de comentario
+        switch ($request->query("error")) {
+            case "auth":
+                $errorQueryString = ["reaccion" => "Para reaccionar a una publicación es necesario iniciar sesión."];
+                break;
+
+            case "publicacion":
+            case "desconocido":
+                $errorQueryString = ["reaccion" => "Ocurrió un error al intentar reaccionar a la publicación."];
+                break;
+
+            case null:
+            default:
+                $errorQueryString = [];
+                break;
+        }
+
+        $erroresComentario = session()->get("errors") != null ? session()->get("errors")->toArray() : [];
+
+        $errores = array_merge($errorQueryString, $erroresComentario);
+
+
+        //# informacion acerca de que reacciones ya han sido realizadas por le usuarie
+        if (!Auth::guest()) {
+            $dadoMeGusta = Models\Usuarie::Find(Auth::id())
+                ->reacciones()
+                ->where("publicacion_id", $publicacion->id)
+                ->where("relacion", "me_gusta")
+                ->exists();
+
+            $dadoGuardar = Models\Usuarie::Find(Auth::id())
+                ->reacciones()
+                ->where("publicacion_id", $publicacion->id)
+                ->where("relacion", "guardar")
+                ->exists();
+        }
+
+        //* finalmente devuelve view con info de publicacion, errores y reacciones tomadas
         return view("paginas.publicacion", [
-            "publicacion" => $publicacion
-        ]);
+            "publicacion" => $publicacion,
+            "dadoMeGusta" => $dadoMeGusta,
+            "dadoGuardar" => $dadoGuardar
+        ])->withErrors($errores);
     }
 }

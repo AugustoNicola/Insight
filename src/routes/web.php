@@ -5,6 +5,7 @@ use App\Http\Controllers\ControladorUsuarie;
 use App\Http\Controllers\ControladorCategoria;
 use App\Http\Controllers\ControladorPublicacion;
 use App\Http\Controllers\ControladorComentario;
+use App\Http\Controllers\ControladorReaccion;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,3 +39,8 @@ Route::get("/publicaciones/{id}", [ControladorPublicacion::class, "informacionPu
 
 //* =========== Comentarios ===========
 Route::post("/comentario", [ControladorComentario::class, "publicarComentario"])->name("comentario");
+
+//* =========== API ===========
+Route::post("/api/reacciones", [ControladorReaccion::class, "publicarReaccion"])->name("publicarReaccion");
+
+Route::delete("/api/reacciones", [ControladorReaccion::class, "eliminarReaccion"])->name("eliminarReaccion");
