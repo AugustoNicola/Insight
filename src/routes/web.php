@@ -40,6 +40,7 @@ Route::get("/escribir", [ControladorPublicacion::class, "vistaPublicarPublicacio
 Route::post("/publicaciones", [ControladorPublicacion::class, "publicarPublicacion"])->name("publicarPublicacion");
 Route::get("/publicaciones/{id}/editar", [ControladorPublicacion::class, "vistaEditarPublicacion"])->name("editarPublicacion");
 Route::put("/publicaciones/{id}", [ControladorPublicacion::class, "editarPublicacion"]);
+Route::delete("/publicaciones/{id}", [ControladorPublicacion::class, "eliminarPublicacion"]);
 
 //* =========== Comentarios ===========
 Route::post("/comentario", [ControladorComentario::class, "publicarComentario"])->name("comentario");

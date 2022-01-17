@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Models;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
+
 
 class ControladorPublicacion extends Controller
 {
@@ -258,5 +259,38 @@ class ControladorPublicacion extends Controller
         $publicacion->categorias()->attach($camposValidados["categorias"]);
 
         return redirect("/publicaciones/" . $publicacion->id, 302); // 302: Found
+    }
+
+    public function eliminarPublicacion($id)
+    {
+        $publicacion = Models\Publicacion::Find($id);
+        if ($publicacion === null) {
+            // ? publicacion no encontrada en la BBDD
+            return redirect("/publicaciones", 303)->withErrors([
+                "publicacion" => "Ocurrió un error al intentar eliminar la publicación."
+            ])->withInput(); // 303: See Other
+        }
+
+
+        if (Auth::guest() || Auth::id() != $publicacion->usuarie_id) {
+            //? usuarie no autenticade como autore, no puede editar
+            return redirect("/publicaciones", 303)->withErrors([
+                "autenticacion" => "No tiene permisos necesarios para eliminar esta publicación."
+            ])->withInput(); // 303: See Other
+        }
+
+        //* publicacion valida y autenticade
+        Models\CategoriaPublicacion::query()->where("publicacion_id", $id)->delete(); // eliminamos relaciones con categorias
+        Models\Comentario::query()->where("publicacion_id", $id)->delete(); // eliminamos comentarios
+        Models\Reaccion::query()->where("publicacion_id", $id)->delete(); // eliminamos reacciones
+        if ($publicacion->portada != null) {
+            // publicacion tiene imagen, borrar de disco
+            Storage::disk("public")->delete("publicaciones/" . $publicacion->portada);
+        }
+        $publicacion->delete(); // eliminamos publicacion de la BBDD
+
+        return redirect("/publicaciones", 302)->with([
+            "exito" => "La publicación fue eliminada correctamente."
+        ]); // 302: Found
     }
 }
