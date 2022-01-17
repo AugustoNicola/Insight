@@ -36,6 +36,7 @@ Route::get("/categorias/{id}", [ControladorCategoria::class, "informacionCategor
 //* =========== Publicaciones ===========
 Route::get("/publicaciones", [ControladorPublicacion::class, "listarPublicaciones"])->name("publicaciones");
 Route::get("/publicaciones/{id}", [ControladorPublicacion::class, "informacionPublicacion"])->name("publicacion");
+Route::get("/escribir", [ControladorPublicacion::class, "vistaPublicarPublicacion"])->name("escribir");
 Route::post("/publicaciones", [ControladorPublicacion::class, "publicarPublicacion"])->name("publicarPublicacion");
 
 //* =========== Comentarios ===========

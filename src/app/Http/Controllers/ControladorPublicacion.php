@@ -100,6 +100,15 @@ class ControladorPublicacion extends Controller
         ])->withErrors($errores);
     }
 
+    public function vistaPublicarPublicacion()
+    {
+        $categorias = Models\Categoria::All();
+
+        return view("paginas.escribir", [
+            "categorias" => $categorias
+        ]);
+    }
+
     public function publicarPublicacion(Request $request)
     {
         $validador = Validator::make(
