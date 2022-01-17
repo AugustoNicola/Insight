@@ -21,11 +21,7 @@ class CrearPublicacionTest extends TestCase
 
     public function test_DeberiaCrearPublicacionYRedirigir_CuandoDatosValidosConImagen()
     {
-        // por alguna razon el factory devuelve una clase que el actingAs no puede usar, asi que creamos a le usuarie desde la clase y guardamos a la BBDD
-        $usuarie = new Models\Usuarie([
-            "nombre" => $this->faker->name(),
-            "contrasena" => Hash::make($this->faker->word())
-        ]);
+        $usuarie = Models\Usuarie::factory()->create();
 
         $categorias = Models\Categoria::factory()->count(3)->create();
 
@@ -47,13 +43,13 @@ class CrearPublicacionTest extends TestCase
         $response->assertSessionHasNoErrors();
         $this->assertAuthenticatedAs($usuarie);
 
-        $response->assertSeeText($publicacionCreada->titulo);
-        $response->assertSeeText($categorias->pluck("id"));
-        $response->assertSeeText("Por " . $usuarie->nombre);
-        $response->assertSeeText($publicacionCreada->fecha_creacion->format("d/m/Y"));
-        $response->assertSeeText("0 me gusta");
-        $response->assertSeeText("0 comentarios");
-        $response->assertSeeText(explode("\n", $publicacionCreada->cuerpo));
+        $this->followRedirects($response)->assertSeeText($publicacionCreada->titulo);
+        $this->followRedirects($response)->assertSeeText($categorias->pluck("nombre")->toArray());
+        $this->followRedirects($response)->assertSeeText("Por " . $usuarie->nombre);
+        $this->followRedirects($response)->assertSeeText($publicacionCreada->fecha_creacion->format("d/m/Y"));
+        $this->followRedirects($response)->assertSeeText("0 me gusta");
+        $this->followRedirects($response)->assertSeeText("0 comentarios");
+        $this->followRedirects($response)->assertSeeText(explode("\n", $publicacionCreada->cuerpo));
 
         assertTrue(Storage::disk("public")->exists("publicaciones/" . $archivo->hashName()));
         assertEquals($publicacionCreada->portada, $archivo->hashName());
@@ -64,11 +60,7 @@ class CrearPublicacionTest extends TestCase
 
     public function test_DeberiaCrearPublicacionYRedirigir_CuandoDatosValidosSinImagen()
     {
-        // por alguna razon el factory devuelve una clase que el actingAs no puede usar, asi que creamos a le usuarie desde la clase y guardamos a la BBDD
-        $usuarie = new Models\Usuarie([
-            "nombre" => $this->faker->name(),
-            "contrasena" => Hash::make($this->faker->word())
-        ]);
+        $usuarie = Models\Usuarie::factory()->create();
 
         $categorias = Models\Categoria::factory()->count(3)->create();
 
@@ -87,22 +79,18 @@ class CrearPublicacionTest extends TestCase
         $response->assertSessionHasNoErrors();
         $this->assertAuthenticatedAs($usuarie);
 
-        $response->assertSeeText($publicacionCreada->titulo);
-        $response->assertSeeText($categorias->pluck("id"));
-        $response->assertSeeText("Por " . $usuarie->nombre);
-        $response->assertSeeText($publicacionCreada->fecha_creacion->format("d/m/Y"));
-        $response->assertSeeText("0 me gusta");
-        $response->assertSeeText("0 comentarios");
-        $response->assertSeeText(explode("\n", $publicacionCreada->cuerpo));
+        $this->followRedirects($response)->assertSeeText($publicacionCreada->titulo);
+        $this->followRedirects($response)->assertSeeText($categorias->pluck("nombre")->toArray());
+        $this->followRedirects($response)->assertSeeText("Por " . $usuarie->nombre);
+        $this->followRedirects($response)->assertSeeText($publicacionCreada->fecha_creacion->format("d/m/Y"));
+        $this->followRedirects($response)->assertSeeText("0 me gusta");
+        $this->followRedirects($response)->assertSeeText("0 comentarios");
+        $this->followRedirects($response)->assertSeeText(explode("\n", $publicacionCreada->cuerpo));
     }
 
     public function test_DeberiaNegarPublicacion_CuandoTituloInvalido()
     {
-        // por alguna razon el factory devuelve una clase que el actingAs no puede usar, asi que creamos a le usuarie desde la clase y guardamos a la BBDD
-        $usuarie = new Models\Usuarie([
-            "nombre" => $this->faker->name(),
-            "contrasena" => Hash::make($this->faker->word())
-        ]);
+        $usuarie = Models\Usuarie::factory()->create();
 
         $categorias = Models\Categoria::factory()->count(3)->create();
 
@@ -116,7 +104,7 @@ class CrearPublicacionTest extends TestCase
             ]);
 
         $responseTituloVacio->assertStatus(303); // 303: See Other
-        $responseTituloVacio->assertRedirect("/entrar");
+        $responseTituloVacio->assertRedirect("/escribir");
         $responseTituloVacio->assertSessionHasErrors([
             "titulo" => "El campo titulo es obligatorio."
         ]);
@@ -131,7 +119,7 @@ class CrearPublicacionTest extends TestCase
             ]);
 
         $responseTituloCorto->assertStatus(303); // 303: See Other
-        $responseTituloCorto->assertRedirect("/entrar");
+        $responseTituloCorto->assertRedirect("/escribir");
         $responseTituloCorto->assertSessionHasErrors([
             "titulo" => "El campo titulo debe tener entre 3 y 110 caracteres."
         ]);
@@ -140,13 +128,13 @@ class CrearPublicacionTest extends TestCase
         $responseTituloLargo = $this->actingAs($usuarie)
             ->from("/escribir")
             ->post("/publicaciones", [
-                "titulo" => $this->faker->word(200),
+                "titulo" => $this->faker->words(200, true),
                 "categorias" => $categorias->pluck("id"),
                 "cuerpo" => $this->faker->paragraphs(3, true)
             ]);
 
         $responseTituloLargo->assertStatus(303); // 303: See Other
-        $responseTituloLargo->assertRedirect("/entrar");
+        $responseTituloLargo->assertRedirect("/escribir");
         $responseTituloLargo->assertSessionHasErrors([
             "titulo" => "El campo titulo debe tener entre 3 y 110 caracteres."
         ]);
@@ -154,11 +142,7 @@ class CrearPublicacionTest extends TestCase
 
     public function test_DeberiaNegarPublicacion_CuandoCategoriasInvalidas()
     {
-        // por alguna razon el factory devuelve una clase que el actingAs no puede usar, asi que creamos a le usuarie desde la clase y guardamos a la BBDD
-        $usuarie = new Models\Usuarie([
-            "nombre" => $this->faker->name(),
-            "contrasena" => Hash::make($this->faker->word())
-        ]);
+        $usuarie = Models\Usuarie::factory()->create();
 
         //# categorias vacias
         $responseTituloVacio = $this->actingAs($usuarie)
@@ -169,7 +153,7 @@ class CrearPublicacionTest extends TestCase
             ]);
 
         $responseTituloVacio->assertStatus(303); // 303: See Other
-        $responseTituloVacio->assertRedirect("/entrar");
+        $responseTituloVacio->assertRedirect("/escribir");
         $responseTituloVacio->assertSessionHasErrors([
             "categorias" => "Es necesario seleccionar al menos una categoría."
         ]);
@@ -188,7 +172,7 @@ class CrearPublicacionTest extends TestCase
             ]);
 
         $responseNoAutenticado->assertStatus(303); // 303: See Other
-        $responseNoAutenticado->assertRedirect("/entrar");
+        $responseNoAutenticado->assertRedirect("/escribir");
         $responseNoAutenticado->assertSessionHasErrors([
             "autenticacion" => "Para escribir una publicación es necesario iniciar sesión."
         ]);
@@ -197,11 +181,7 @@ class CrearPublicacionTest extends TestCase
 
     public function test_DeberiaNegarPublicacion_CuandoImagenInvalida()
     {
-        // por alguna razon el factory devuelve una clase que el actingAs no puede usar, asi que creamos a le usuarie desde la clase y guardamos a la BBDD
-        $usuarie = new Models\Usuarie([
-            "nombre" => $this->faker->name(),
-            "contrasena" => Hash::make($this->faker->word())
-        ]);
+        $usuarie = Models\Usuarie::factory()->create();
 
         $categorias = Models\Categoria::factory()->count(3)->create();
 
@@ -218,13 +198,13 @@ class CrearPublicacionTest extends TestCase
             ]);
 
         $responseArchivoNoEsImagen->assertStatus(303); // 303: See Other
-        $responseArchivoNoEsImagen->assertRedirect("/entrar");
+        $responseArchivoNoEsImagen->assertRedirect("/escribir");
         $responseArchivoNoEsImagen->assertSessionHasErrors([
             "imagen" => "El archivo subido debe ser una imagen."
         ]);
 
         //# imagen es demasiado chica
-        $imagenChica = UploadedFile::fake()->create("juan.txt");
+        $imagenChica = UploadedFile::fake()->image("juan.jpg", 50, 50);
 
         $responseArchivoNoEsImagen = $this->actingAs($usuarie)
             ->from("/escribir")
@@ -236,19 +216,19 @@ class CrearPublicacionTest extends TestCase
             ]);
 
         $responseArchivoNoEsImagen->assertStatus(303); // 303: See Other
-        $responseArchivoNoEsImagen->assertRedirect("/entrar");
+        $responseArchivoNoEsImagen->assertRedirect("/escribir");
         $responseArchivoNoEsImagen->assertSessionHasErrors([
-            "imagen" => "La imagen subida es debe medir entre 100x100 y 5000x5000 pixeles."
+            "imagen" => "La imagen subida debe medir entre 100x100 y 5000x5000 pixeles."
         ]);
+
+        // eliminamos la foto luego de todas las validaciones
+        Storage::disk("public")->delete("publicaciones/" . $archivoNoImagen->hashName());
+        Storage::disk("public")->delete("publicaciones/" . $imagenChica->hashName());
     }
 
     public function test_DeberiaNegarPublicacion_CuandoCuerpoInvalido()
     {
-        // por alguna razon el factory devuelve una clase que el actingAs no puede usar, asi que creamos a le usuarie desde la clase y guardamos a la BBDD
-        $usuarie = new Models\Usuarie([
-            "nombre" => $this->faker->name(),
-            "contrasena" => Hash::make($this->faker->word())
-        ]);
+        $usuarie = Models\Usuarie::factory()->create();
 
         $categorias = Models\Categoria::factory()->count(3)->create();
 
@@ -262,7 +242,7 @@ class CrearPublicacionTest extends TestCase
             ]);
 
         $responseCuerpoVacio->assertStatus(303); // 303: See Other
-        $responseCuerpoVacio->assertRedirect("/entrar");
+        $responseCuerpoVacio->assertRedirect("/escribir");
         $responseCuerpoVacio->assertSessionHasErrors([
             "cuerpo" => "El campo cuerpo es obligatorio."
         ]);
@@ -277,7 +257,7 @@ class CrearPublicacionTest extends TestCase
             ]);
 
         $responseCuerpoCorto->assertStatus(303); // 303: See Other
-        $responseCuerpoCorto->assertRedirect("/entrar");
+        $responseCuerpoCorto->assertRedirect("/escribir");
         $responseCuerpoCorto->assertSessionHasErrors([
             "cuerpo" => "El campo cuerpo debe tener entre 3 y 2000 caracteres."
         ]);
@@ -292,7 +272,7 @@ class CrearPublicacionTest extends TestCase
             ]);
 
         $responseCuerpoLargo->assertStatus(303); // 303: See Other
-        $responseCuerpoLargo->assertRedirect("/entrar");
+        $responseCuerpoLargo->assertRedirect("/escribir");
         $responseCuerpoLargo->assertSessionHasErrors([
             "cuerpo" => "El campo cuerpo debe tener entre 3 y 2000 caracteres."
         ]);
