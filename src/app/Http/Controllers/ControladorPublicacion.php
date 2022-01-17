@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class ControladorPublicacion extends Controller
@@ -165,5 +166,97 @@ class ControladorPublicacion extends Controller
         $publicacionCreada->categorias()->attach($camposValidados["categorias"]);
 
         return redirect("/publicaciones/" . $publicacionCreada->id, 302); // 302: Found
+    }
+
+    public function vistaEditarPublicacion($id)
+    {
+        $publicacion = Models\Publicacion::with("categorias")
+            ->where("id", $id)
+            ->first();
+
+        if ($publicacion === null) {
+            // ? publicacion no encontrada en la BBDD
+            return abort(404);
+        }
+
+        if (Auth::guest() || Auth::id() != $publicacion->usuarie_id) {
+            //? usuarie no autenticade como autore, no puede editar
+            return redirect("/publicaciones/" . $publicacion->id, 303)->withErrors([
+                "autenticacion" => "No tiene permisos necesarios para editar esta publicación."
+            ])->withInput(); // 303: See Other
+        }
+
+        $categorias = Models\Categoria::All();
+
+        return view("paginas.editar-publicacion", [
+            "publicacion" => $publicacion,
+            "categorias" => $categorias
+        ]);
+    }
+
+    public function editarPublicacion(Request $request, $id)
+    {
+        $validador = Validator::make(
+            $request->only(["titulo", "categorias", "cuerpo", "imagen"]),
+            [
+                "titulo" => "required|between:3,110",
+                "categorias" => "required",
+                "cuerpo" => "required|between:3,2000",
+                "imagen" => "bail|image|mimes:jpg,png,jpeg|max:2048|dimensions:min_width=100,min_height=100,max_width=5000,max_height=5000"
+            ],
+            [
+                "titulo.required" => "El campo titulo es obligatorio.",
+                "titulo.between" => "El campo titulo debe tener entre :min y :max caracteres.",
+
+                "categorias.required" => "Es necesario seleccionar al menos una categoría.",
+
+                "cuerpo.required" => "El campo cuerpo es obligatorio.",
+                "cuerpo.between" => "El campo cuerpo debe tener entre :min y :max caracteres.",
+
+                "imagen.image" => "El archivo subido debe ser una imagen.",
+                "imagen.mimes" => "El archivo subido es de una extensión no soportada.",
+                "imagen.max" => "El archivo subido es demasiado pesado.",
+                "imagen.dimensions" => "La imagen subida debe medir entre 100x100 y 5000x5000 pixeles."
+            ]
+        );
+
+        if ($validador->fails()) {
+            // ? campos invalidos
+            return back(303)->withErrors($validador)->withInput(); // 303: See Other
+        }
+
+        $publicacion = Models\Publicacion::Find($id);
+        if ($publicacion === null) {
+            // ? publicacion no encontrada en la BBDD
+            return back(303)->withErrors([
+                "publicacion" => "Ocurrió un error al intentar editar la publicación."
+            ])->withInput(); // 303: See Other
+        }
+
+
+        if (Auth::guest() || Auth::id() != $publicacion->usuarie_id) {
+            //? usuarie no autenticade como autore, no puede editar
+            return back(303)->withErrors([
+                "autenticacion" => "No tiene permisos necesarios para editar esta publicación."
+            ])->withInput(); // 303: See Other
+        }
+
+        //* campos validos y autenticade
+        $camposValidados = $validador->validated();
+
+        $publicacion->titulo = $camposValidados["titulo"];
+        $publicacion->cuerpo = $camposValidados["cuerpo"];
+
+        if ($request->hasFile("imagen")) {
+            // # imagen cargada
+            $request->file("imagen")->store("/public/publicaciones"); // /storage/app/public/publicaciones/img.xyz
+            $publicacion->portada = $request->file("imagen")->hashName();
+        }
+
+        $publicacion->save(); // cargamos usuarie a la BBDD
+        $publicacion->categorias()->detach();
+        $publicacion->categorias()->attach($camposValidados["categorias"]);
+
+        return redirect("/publicaciones/" . $publicacion->id, 302); // 302: Found
     }
 }
