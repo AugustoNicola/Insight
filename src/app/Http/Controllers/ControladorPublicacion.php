@@ -76,6 +76,8 @@ class ControladorPublicacion extends Controller
 
 
         //# informacion acerca de que reacciones ya han sido realizadas por le usuarie
+        $dadoMeGusta = false;
+        $dadoGuardar = false;
         if (!Auth::guest()) {
             $dadoMeGusta = Models\Usuarie::Find(Auth::id())
                 ->reacciones()
@@ -120,7 +122,7 @@ class ControladorPublicacion extends Controller
                 "imagen.image" => "El archivo subido debe ser una imagen.",
                 "imagen.mimes" => "El archivo subido es de una extensión no soportada.",
                 "imagen.max" => "El archivo subido es demasiado pesado.",
-                "imagen.dimensions" => "La imagen subida es debe medir entre 100x100 y 5000x5000 pixeles."
+                "imagen.dimensions" => "La imagen subida debe medir entre 100x100 y 5000x5000 pixeles."
             ]
         );
 
@@ -129,21 +131,29 @@ class ControladorPublicacion extends Controller
             return back(303)->withErrors($validador)->withInput(); // 303: See Other
         }
 
+        if (Auth::guest()) {
+            //? usuarie no autenticade, no puede reaccionar
+            return back(303)->withErrors([
+                "autenticacion" => "Para escribir una publicación es necesario iniciar sesión."
+            ])->withInput(); // 303: See Other
+        }
+
         //* campos validos
         $camposValidados = $validador->validated();
 
         $publicacionCreada = new Models\Publicacion;
         $publicacionCreada->titulo = $camposValidados["titulo"];
-        $publicacionCreada->categorias()->attach($camposValidados["categorias"]);
+        $publicacionCreada->usuarie_id = Auth::id();
         $publicacionCreada->cuerpo = $camposValidados["cuerpo"];
 
         if ($request->hasFile("imagen")) {
             // # imagen cargada
             $request->file("imagen")->store("/public/publicaciones"); // /storage/app/public/publicaciones/img.xyz
-            $publicacionCreada->imagen = $request->file("imagen")->hashName();
+            $publicacionCreada->portada = $request->file("imagen")->hashName();
         }
 
         $publicacionCreada->save(); // cargamos usuarie a la BBDD
+        $publicacionCreada->categorias()->attach($camposValidados["categorias"]);
 
         return redirect("/publicaciones/" . $publicacionCreada->id, 302); // 302: Found
     }
