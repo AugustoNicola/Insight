@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 
 use App\Models;
 
-class RutaComentarioTest extends TestCase
+class CrearComentarioTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
 

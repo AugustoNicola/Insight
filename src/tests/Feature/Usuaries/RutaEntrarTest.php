@@ -8,7 +8,7 @@ use Tests\TestCase;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Usuarie;
 
-class UsuarieRutaEntrarTest extends TestCase
+class RutaEntrarTest extends TestCase
 {
     use DatabaseTransactions;
 

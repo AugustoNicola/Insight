@@ -12,7 +12,7 @@ use App\Models\Usuarie;
 use function PHPUnit\Framework\assertEquals;
 use function PHPUnit\Framework\assertTrue;
 
-class UsuarieRutaRegistrarseTest extends TestCase
+class RutaRegistrarseTest extends TestCase
 {
     use DatabaseTransactions;
 
