@@ -20,6 +20,8 @@ Route::post("/entrar", [ControladorUsuarie::class, "entrar"]);
 
 Route::get("/perfil", [ControladorUsuarie::class, "mostrarPerfil"])->name("perfil");
 
+Route::get("/guardados", [ControladorUsuarie::class, "mostrarGuardados"])->name("guardados");
+
 Route::get("/perfil/editar", [ControladorUsuarie::class, "vistaEditarPerfil"]);
 Route::put("/perfil", [ControladorUsuarie::class, "editarPerfil"]);
 

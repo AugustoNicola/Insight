@@ -146,6 +146,33 @@ class ControladorUsuarie extends Controller
         ]);
     }
 
+    public function mostrarGuardados()
+    {
+        $autenticade = false;
+        $publicacionesGuardadas = [];
+
+        if (Auth::check()) {
+            //# usuarie autenticade, podemos devolver informacion
+            $autenticade = true;
+
+            $usuarie = Usuarie::with("reacciones")
+                ->where("id", Auth::id())
+                ->first();
+
+            // filtramos a un nuevo array con solo las publicaciones guardadas
+            foreach ($usuarie->reacciones as $publicacion) {
+                if ($publicacion->pivot->relacion == "guardar") {
+                    array_push($publicacionesGuardadas, $publicacion);
+                }
+            }
+        }
+
+        return view("paginas.guardados", [
+            "publicaciones" => $publicacionesGuardadas,
+            "autenticade" => $autenticade
+        ]);
+    }
+
     public function vistaEditarPerfil()
     {
         if (Auth::guest()) {
