@@ -18,7 +18,7 @@
 	
 	<div class="publicaciones">
 		@foreach($categoria->publicaciones as $publicacion)
-			<x-publicacion :publicacion="$publicacion" />
+			<x-publicacion tipo="normal" :publicacion="$publicacion" />
 		@endforeach
 	</div>
 	

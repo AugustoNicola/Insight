@@ -25,7 +25,7 @@
 		@if (count($usuarie->publicaciones) > 0)
 		
 			@foreach($usuarie->publicaciones as $publicacion)
-				<x-publicacion-editable :publicacion="$publicacion" />
+				<x-publicacion tipo="editable" :publicacion="$publicacion" />
 			@endforeach
 		
 		@else

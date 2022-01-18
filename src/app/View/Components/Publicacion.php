@@ -7,10 +7,12 @@ use Illuminate\View\Component;
 class Publicacion extends Component
 {
     public $publicacion;
+    public $tipo = "normal";
 
-    public function __construct($publicacion)
+    public function __construct($publicacion, $tipo)
     {
         $this->publicacion = $publicacion;
+        $this->tipo = $tipo;
     }
 
     public function render()
