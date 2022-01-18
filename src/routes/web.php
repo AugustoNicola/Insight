@@ -1,15 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\ControladorInicio;
 use App\Http\Controllers\ControladorUsuarie;
 use App\Http\Controllers\ControladorCategoria;
 use App\Http\Controllers\ControladorPublicacion;
 use App\Http\Controllers\ControladorComentario;
 use App\Http\Controllers\ControladorReaccion;
 
-Route::get("/", function () {
-    return view('welcome');
-});
+Route::get("/", [ControladorInicio::class, "paginaInicio"])->name("inicio");
 
 //* =========== Usuaries ===========
 Route::get("/registrarse", [ControladorUsuarie::class, "vistaRegistrarse"])->name("registrarse");
