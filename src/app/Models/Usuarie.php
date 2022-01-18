@@ -42,11 +42,8 @@ class Usuarie extends Model implements AuthenticatableContract
     # las reacciones que este usuarie ha realizado
     public function reacciones()
     {
-        return $this->belongsToMany(
-            Publicacion::class,
-            "reacciones",
-            "usuarie_id",
-            "publicacion_id"
-        )->using(Reaccion::class);
+        return $this->belongsToMany(Publicacion::class, "reacciones")
+            ->withPivot("relacion")
+            ->using(Reaccion::class);
     }
 }

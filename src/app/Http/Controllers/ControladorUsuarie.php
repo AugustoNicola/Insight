@@ -113,4 +113,36 @@ class ControladorUsuarie extends Controller
             return back(303)->withErrors($validador)->withInput(); // 303: See Other
         }
     }
+
+    public function mostrarPerfil()
+    {
+        $usuarie = null;
+
+        if (Auth::check()) {
+            //# usuarie autenticade, podemos devolver informacion
+
+            $usuarie = Usuarie::with("publicaciones")
+                ->withCount("publicaciones")
+                ->with("reacciones")
+                ->where("id", Auth::id())
+                ->first();
+
+            // agregamos un campo al objeto devuelto con el calculo de cantidad de guardados
+            $usuarie->cantidad_guardados = array_reduce(
+                $usuarie
+                    ->reacciones // buscamos todas las reacciones
+                    ->pluck("pivot.relacion")->toArray() // filtramos solo a tipo de reaccion ("me gusta" | "guardar")
+                ,
+                function ($valorPrevio, $reaccion) {
+                    // contamos cuantos "me_gusta" hay
+                    return $reaccion == "guardar" ? $valorPrevio + 1 : $valorPrevio;
+                },
+                0
+            );
+        }
+
+        return view("paginas.perfil", [
+            "usuarie" => $usuarie
+        ]);
+    }
 }
