@@ -44,4 +44,12 @@ class Publicacion extends Model
             ->withPivot("relacion")
             ->using(Reaccion::class);
     }
+
+    public function meGusta()
+    {
+        return $this->belongsToMany(Usuarie::class, "reacciones")
+            ->withPivot("relacion")
+            ->wherePivot("relacion", "me_gusta")
+            ->using(Reaccion::class);
+    }
 }

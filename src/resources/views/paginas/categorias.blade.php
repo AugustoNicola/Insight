@@ -15,7 +15,7 @@
 			<h3 class="nombre">{{$categoria->nombre}}</h3>
 			
 			@if($categoria->publicaciones_count >= 1)
-			<span class="publicaciones">{{$categoria->publicaciones_count}} {{$categoria->publicaciones_count > 1 ? "publicaciones" : "publicación"}}</span>
+			<span class="publicaciones">{{$categoria->publicaciones_count}} {{$categoria->publicaciones_count != 1 ? "publicaciones" : "publicación"}}</span>
 			@else
 			<span class="publicaciones">Sin publicaciones</span>
 			@endif
