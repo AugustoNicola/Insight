@@ -20,6 +20,9 @@ Route::post("/entrar", [ControladorUsuarie::class, "entrar"]);
 
 Route::get("/perfil", [ControladorUsuarie::class, "mostrarPerfil"])->name("perfil");
 
+Route::get("/perfil/editar", [ControladorUsuarie::class, "vistaEditarPerfil"]);
+Route::put("/perfil", [ControladorUsuarie::class, "editarPerfil"]);
+
 //* =========== Categorias ===========
 Route::get("/categorias", [ControladorCategoria::class, "listarCategorias"])->name("categorias");
 Route::get("/categorias/{id}", [ControladorCategoria::class, "informacionCategoria"])->name("categoria");

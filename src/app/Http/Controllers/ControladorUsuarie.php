@@ -145,4 +145,77 @@ class ControladorUsuarie extends Controller
             "usuarie" => $usuarie
         ]);
     }
+
+    public function vistaEditarPerfil()
+    {
+        if (Auth::guest()) {
+            //? usuarie no autenticade, no puede editar
+            return redirect("/entrar", 303)->withErrors([
+                "autenticacion" => "Para poder editar tu cuenta primero es necesario iniciar sesión."
+            ]); // 303: See Other
+        }
+
+        //* usuarie autenticade, devolviendo informacion de usuarie
+        $usuarie = Usuarie::find(Auth::id());
+
+        return view("paginas.editar-perfil", [
+            "usuarie" => $usuarie
+        ]);
+    }
+
+    public function editarPerfil(Request $request)
+    {
+        $validador = Validator::make(
+            $request->only(["nombre", "contrasena", "contrasena_confirmation", "imagen"]),
+            [
+                "nombre" => "required|between:3,100",
+                "contrasena" => "between:3,40|confirmed",
+                "imagen" => "bail|image|mimes:jpg,png,jpeg|max:2048|dimensions:min_width=100,min_height=100,max_width=5000,max_height=5000"
+            ],
+            [
+                "nombre.required" => "El campo nombre de usuarie es obligatorio.",
+                "nombre.between" => "El campo nombre de usuarie debe tener entre :min y :max caracteres.",
+
+                "contrasena.between" => "El campo contraseña debe tener entre :min y :max caracteres.",
+                "contrasena.confirmed" => "Las contraseñas no coinciden.",
+
+                "imagen.image" => "El archivo subido debe ser una imagen.",
+                "imagen.mimes" => "El archivo subido es de una extensión no soportada.",
+                "imagen.max" => "El archivo subido es demasiado pesado.",
+                "imagen.dimensions" => "La imagen subida debe medir entre 100x100 y 5000x5000 pixeles."
+            ]
+        );
+
+        if ($validador->fails()) {
+            // ? campos invalidos
+            return back(303)->withErrors($validador)->withInput(); // 303: See Other
+        }
+
+        if (Auth::guest()) {
+            //? usuarie no autenticade, no puede editar
+            return redirect("/entrar", 303)->withErrors([
+                "autenticacion" => "Para poder editar tu cuenta primero es necesario iniciar sesión."
+            ])->withInput(); // 303: See Other
+        }
+
+        //* campos validos y autenticade
+        $camposValidados = $validador->validated();
+
+        $usuarie = Usuarie::find(Auth::id());
+
+        $usuarie->nombre = $camposValidados["nombre"];
+        if ($camposValidados["contrasena"]) {
+            $usuarie->contrasena = Hash::make($camposValidados["contrasena"]);
+        }
+
+        if ($request->hasFile("imagen")) {
+            // # imagen cargada
+            $request->file("imagen")->store("/public/usuaries"); // /storage/app/public/usuaries/img.xyz
+            $usuarie->imagen = $request->file("imagen")->hashName();
+        }
+
+        $usuarie->save(); // cargamos usuarie a la BBDD
+
+        return redirect("/perfil", 302); // 302: Found
+    }
 }
