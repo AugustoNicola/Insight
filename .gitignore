@@ -37,6 +37,3 @@ npm-debug.log
 yarn-error.log
 src/.idea
 src/.vscode
-
-# aniadido css compilado final ya que cada vez que se editan los estilos cambia
-src/public/css/app.css
