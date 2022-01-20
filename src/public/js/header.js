@@ -8,9 +8,10 @@ botonUsuarie.addEventListener("click", function (evento) {
         navegacion.classList.add(
             "max-h-max",
             "p-4",
-            "border-b-[3px]",
             "bg-primariomedio",
             "border-primario",
+            "border-b-[3px]",
+            "lg:border-l-[3px]",
             "activado"
         );
     } else {
@@ -19,9 +20,10 @@ botonUsuarie.addEventListener("click", function (evento) {
         navegacion.classList.remove(
             "max-h-max",
             "p-4",
-            "border-b-[3px]",
             "bg-primariomedio",
             "border-primario",
+            "border-b-[3px]",
+            "lg:border-l-[3px]",
             "activado"
         );
     }

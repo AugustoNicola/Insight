@@ -425,6 +425,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .w-14 {
   width: 3.5rem;
 }
+.w-screen {
+  width: 100vw;
+}
 .w-10 {
   width: 2.5rem;
 }
@@ -448,6 +451,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .flex-nowrap {
   flex-wrap: nowrap;
+}
+.items-end {
+  align-items: flex-end;
 }
 .items-center {
   align-items: center;
@@ -622,25 +628,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-text-opacity: 1;
   color: rgb(73 73 73 / var(--tw-text-opacity));
 }
-.group:hover .group-hover\:max-h-max {
-  max-height: -webkit-max-content;
-  max-height: -moz-max-content;
-  max-height: max-content;
-}
-.group:hover .group-hover\:border-b-\[3px\] {
-  border-bottom-width: 3px;
-}
-.group:hover .group-hover\:border-primario {
-  --tw-border-opacity: 1;
-  border-color: rgb(7 94 82 / var(--tw-border-opacity));
-}
-.group:hover .group-hover\:bg-primariomedio {
-  --tw-bg-opacity: 1;
-  background-color: rgb(140 187 187 / var(--tw-bg-opacity));
-}
-.group:hover .group-hover\:p-4 {
-  padding: 1rem;
-}
 .group:hover .group-hover\:text-blancohover {
   --tw-text-opacity: 1;
   color: rgb(176 176 176 / var(--tw-text-opacity));
@@ -651,8 +638,56 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 @media (min-width: 768px) {
 
+  .md\:container {
+    width: 100%;
+  }
+
+  @media (min-width: 640px) {
+
+    .md\:container {
+      max-width: 640px;
+    }
+  }
+
+  @media (min-width: 768px) {
+
+    .md\:container {
+      max-width: 768px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+
+    .md\:container {
+      max-width: 1024px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+
+    .md\:container {
+      max-width: 1280px;
+    }
+  }
+
+  @media (min-width: 1536px) {
+
+    .md\:container {
+      max-width: 1536px;
+    }
+  }
+
+  .md\:mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .md\:w-full {
     width: 100%;
+  }
+
+  .md\:w-12 {
+    width: 3rem;
   }
 
   .md\:flex-row {
@@ -678,12 +713,76 @@ Ensure the default browser behavior of the `hidden` attribute.
   .md\:gap-3 {
     gap: 0.75rem;
   }
+
+  .md\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
 }
 @media (min-width: 1024px) {
+
+  .lg\:container {
+    width: 100%;
+  }
+
+  @media (min-width: 640px) {
+
+    .lg\:container {
+      max-width: 640px;
+    }
+  }
+
+  @media (min-width: 768px) {
+
+    .lg\:container {
+      max-width: 768px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+
+    .lg\:container {
+      max-width: 1024px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+
+    .lg\:container {
+      max-width: 1280px;
+    }
+  }
+
+  @media (min-width: 1536px) {
+
+    .lg\:container {
+      max-width: 1536px;
+    }
+  }
+
+  .lg\:fixed {
+    position: fixed;
+  }
+
+  .lg\:relative {
+    position: relative;
+  }
+
+  .lg\:top-auto {
+    top: auto;
+  }
+
+  .lg\:right-0 {
+    right: 0px;
+  }
 
   .lg\:mx-auto {
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .lg\:ml-auto {
+    margin-left: auto;
   }
 
   .lg\:w-auto {
@@ -696,6 +795,18 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .lg\:max-w-screen-lg {
     max-width: 1024px;
+  }
+
+  .lg\:max-w-sm {
+    max-width: 24rem;
+  }
+
+  .lg\:border-l-\[3px\] {
+    border-left-width: 3px;
+  }
+
+  .lg\:p-4 {
+    padding: 1rem;
   }
 
   .lg\:px-12 {

@@ -8,6 +8,7 @@ module.exports = {
         "max-h-max",
         "p-4",
         "border-b-[3px]",
+        "lg:border-l-[3px]",
         "bg-primariomedio",
         "border-primario",
     ],
