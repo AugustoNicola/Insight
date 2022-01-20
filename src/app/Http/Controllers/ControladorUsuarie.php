@@ -114,6 +114,16 @@ class ControladorUsuarie extends Controller
         }
     }
 
+    public function cerrarSesion(Request $request)
+    {
+        if (Auth::check()) {
+            Auth::logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+        }
+        return redirect('/');
+    }
+
     public function mostrarPerfil()
     {
         $usuarie = null;

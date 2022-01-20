@@ -18,6 +18,8 @@ Route::post("/registrarse", [ControladorUsuarie::class, "registrarse"]);
 Route::get("/entrar", [ControladorUsuarie::class, "vistaEntrar"])->name("entrar");
 Route::post("/entrar", [ControladorUsuarie::class, "entrar"]);
 
+Route::get("/salir", [ControladorUsuarie::class, "cerrarSesion"])->name("salir");
+
 Route::get("/perfil", [ControladorUsuarie::class, "mostrarPerfil"])->name("perfil");
 
 Route::get("/guardados", [ControladorUsuarie::class, "mostrarGuardados"])->name("guardados");
