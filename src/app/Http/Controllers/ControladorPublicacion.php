@@ -24,7 +24,8 @@ class ControladorPublicacion extends Controller
 
         return view("paginas.publicaciones", [
             "publicaciones" => $publicaciones,
-            "categoriasDestacadas" => $categoriasDestacadas
+            "categoriasDestacadas" => $categoriasDestacadas,
+            "query" => $request->query("titulo", "")
         ]);
     }
 

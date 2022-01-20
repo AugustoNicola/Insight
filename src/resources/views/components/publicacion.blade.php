@@ -1,19 +1,21 @@
-<div class="publicacion">
-    <div class="imagen">
-        {{-- TODO imagen portada --}}
-    </div>
-    <div class="informacion">
-        <a class="titulo" href="/publicaciones/{{$publicacion->id}}">{{$publicacion->titulo}}</a>
-        <div class="categorias">
+<div class="my-4 lg:my-0 flex flex-row flex-nowrap gap-3 rounded-lg bg-primariopastel">
+    <a href="/publicaciones/{{$publicacion->id}}" class="basis-1/4 flex-none border-r-2 border-negro rounded-l-lg">
+        <img src="{{$publicacion->portada != null ? "/storage/publicaciones/" . $publicacion->portada : "/assets/sinportada.png"}}" alt="Imagen de publicación" class="h-full aspect-square rounded-l-lg hover:brightness-105" >
+    </a>
+    <div class="py-2 flex flex-col flex-nowrap justify-around items-start">
+        <a class="font-titulo font-medium text-negro hover:text-negrohover text-lg md:text-xl" href="/publicaciones/{{$publicacion->id}}">{{$publicacion->titulo}}</a>
+        <div class="flex flex-row flex-wrap justify-start items-center gap-2">
             @foreach($publicacion->categorias()->get() as $categoria)
-            <a class="categoria" href="/categorias/{{$categoria->id}}">#{{$categoria->nombre}}</a>
+            <a class="font-cuerpo text-grisoscuro hover:text-negrohover text-lg md:text-xl" href="/categorias/{{$categoria->id}}">#{{$categoria->nombre}}</a>
             @endforeach
         </div>
-        <div class="autore">
-            <div class="imagen-autore"> {{-- TODO imagen autore--}}</div>
-            <p>por {{$publicacion->autore()->first()->nombre}}</p>
+        <div class="my-1 flex flex-row flex-nowrap justify-start items-center">
+            <div class="w-8 h-8 md:w-10 md:h-10">
+                <img src="{{$publicacion->autore()->first()->imagen != null ? "/storage/usuaries/" . $publicacion->autore()->first()->imagen : "/assets/usuariedefault.png"}}" alt="{{$publicacion->autore()->first()->nombre}}" class="rounded-full ring-offset-2 ring-4 ring-grisoscuro" >
+            </div>
+            <p class="ml-3 font-cuerpo text-negro text-lg md:text-xl">por {{$publicacion->autore()->first()->nombre}}</p>
         </div>
-        <p class="reacciones">{{$publicacion->withCount("meGusta")->where("id", $publicacion->id)->first()->me_gusta_count}} me gusta</p>
+        <p class="mt-2 font-ui text-grisoscuro text-lg md:text-xl">{{$publicacion->withCount("meGusta")->where("id", $publicacion->id)->first()->me_gusta_count}} me gusta</p>
     </div>
     @switch($tipo)
     @case("editable")
