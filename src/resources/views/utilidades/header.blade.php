@@ -9,11 +9,20 @@
 			</a>
 			
 			<div class="flex flex-row justify-between items-center gap-x-3 pt-2">
-				<a href="/publicaciones"><i class="bx bx-search-alt-2 text-4xl text-primario hover:text-primariohover"></i></a>
-				<a href="/categorias"><i class="bx bx-hash text-4xl text-primario hover:text-primariohover"></i></a>
-				<a href="/escribir"><i class="bx bx-pencil text-4xl text-primario hover:text-primariohover"></i></a>
+				<a href="/publicaciones" class="group flex flex-row flex-nowrap items-center">
+					<i class="bx bx-search-alt-2 text-4xl text-primario group-hover:text-primariohover"></i>
+					<p class="hidden lg:inline font-ui font-semibold text-lg text-primario group-hover:text-primariohover">Publicaciones</p>
+				</a>
+				<a href="/categorias" class="group flex flex-row flex-nowrap items-center">
+					<i class="bx bx-hash text-4xl text-primario group-hover:text-primariohover"></i>
+					<p class="hidden lg:inline font-ui font-semibold text-lg text-primario group-hover:text-primariohover">Categorías</p>
+				</a>
+				<a href="/escribir" class="group flex flex-row flex-nowrap items-center">
+					<i class="bx bx-pencil text-4xl text-primario group-hover:text-primariohover"></i>
+					<p class="hidden lg:inline font-ui font-semibold text-lg text-primario group-hover:text-primariohover">Escribir</p>
+				</a>
 				
-				<button id="boton-usuarie">
+				<button id="boton-usuarie" class="lg:ml-4">
 					@if (Auth::check())	
 					<img src="{{App\Models\Usuarie::Find(Auth::id())->imagen != null ? "/storage/usuaries/" . App\Models\Usuarie::Find(Auth::id())->imagen : "/assets/usuariedefault.png"}}" alt="Imagen de usuarie" class="w-12 h-12 rounded-full ring-offset-2 ring-4 ring-primario">
 					@else()
