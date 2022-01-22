@@ -25,7 +25,7 @@
     <!-- Icons -->
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 </head>
-    <body class="bg-fondo">
+    <body class="bg-fondo overflow-x-hidden">
     @include("utilidades.header")
     
     
@@ -34,5 +34,5 @@
     @yield("contenido")
     
     @include("utilidades.footer")
-</body>
+    </body>
 </html>
