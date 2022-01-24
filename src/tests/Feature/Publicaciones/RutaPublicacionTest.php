@@ -37,7 +37,7 @@ class RutaPublicacionTest extends TestCase
         foreach ($categorias as $categoria) {
             $response->assertSeeText($categoria->nombre);
         }
-        $response->assertSeeText("Por " . $publicacion->autore->nombre);
+        $response->assertSeeText("por " . $publicacion->autore->nombre);
         $response->assertSeeText($publicacion->fecha_creacion->format("d/m/Y"));
         $response->assertSeeText("3 me gusta");
         $response->assertSeeText("0 comentarios");

@@ -50,7 +50,7 @@ class EditarPublicacionTest extends TestCase
 
         $this->followRedirects($response)->assertSeeText($nuevoTitulo);
         $this->followRedirects($response)->assertSeeText([$categorias[1]->nombre, $categorias[2]->nombre]);
-        $this->followRedirects($response)->assertSeeText("Por " . $usuarie->nombre);
+        $this->followRedirects($response)->assertSeeText("por " . $usuarie->nombre);
         $this->followRedirects($response)->assertSeeText(array_filter(explode("\n", $nuevoCuerpo)), function ($parrafo) {
             return $parrafo != "";
         });
@@ -97,7 +97,7 @@ class EditarPublicacionTest extends TestCase
 
         $this->followRedirects($response)->assertSeeText($nuevoTitulo);
         $this->followRedirects($response)->assertSeeText([$categorias[1]->nombre, $categorias[2]->nombre]);
-        $this->followRedirects($response)->assertSeeText("Por " . $usuarie->nombre);
+        $this->followRedirects($response)->assertSeeText("por " . $usuarie->nombre);
         $this->followRedirects($response)->assertSeeText(array_filter(explode("\n", $nuevoCuerpo)), function ($parrafo) {
             return $parrafo != "";
         });

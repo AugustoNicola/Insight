@@ -25,7 +25,7 @@ class EditarCuentaTest extends TestCase
         $usuarie = Models\Usuarie::factory()->create();
 
         $nuevoNombre = $this->faker->name();
-        $nuevaContrasena = $this->faker->word();
+        $nuevaContrasena = $this->faker->password(4, 10);
         $archivo = UploadedFile::fake()->image("juan.jpg", 150, 150);
 
         $response = $this->actingAs($usuarie)->from("/perfil/editar")->put("/perfil", [

@@ -45,7 +45,7 @@ class CrearPublicacionTest extends TestCase
 
         $this->followRedirects($response)->assertSeeText($publicacionCreada->titulo);
         $this->followRedirects($response)->assertSeeText($categorias->pluck("nombre")->toArray());
-        $this->followRedirects($response)->assertSeeText("Por " . $usuarie->nombre);
+        $this->followRedirects($response)->assertSeeText("por " . $usuarie->nombre);
         $this->followRedirects($response)->assertSeeText($publicacionCreada->fecha_creacion->format("d/m/Y"));
         $this->followRedirects($response)->assertSeeText("0 me gusta");
         $this->followRedirects($response)->assertSeeText("0 comentarios");
@@ -81,7 +81,7 @@ class CrearPublicacionTest extends TestCase
 
         $this->followRedirects($response)->assertSeeText($publicacionCreada->titulo);
         $this->followRedirects($response)->assertSeeText($categorias->pluck("nombre")->toArray());
-        $this->followRedirects($response)->assertSeeText("Por " . $usuarie->nombre);
+        $this->followRedirects($response)->assertSeeText("por " . $usuarie->nombre);
         $this->followRedirects($response)->assertSeeText($publicacionCreada->fecha_creacion->format("d/m/Y"));
         $this->followRedirects($response)->assertSeeText("0 me gusta");
         $this->followRedirects($response)->assertSeeText("0 comentarios");

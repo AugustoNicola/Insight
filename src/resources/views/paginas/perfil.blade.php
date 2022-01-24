@@ -33,7 +33,7 @@
 				@endforeach
 			</div>
 		@else
-			<h3 class="my-3 font-ui font-medium text-grisoscuro text-center text-xl">Todavía no escribiste nignuna publicación.</h3>
+			<h3 class="my-3 font-ui font-medium text-grisoscuro text-center text-xl">Todavía no escribiste ninguna publicación.</h3>
 			<div class="flex flex-row flex-nowrap justify-center items-center">
 				<a href="/escribir" class="my-4 mx-auto px-6 py-2 font-ui font-medium text-blanco text-2xl bg-primario hover:bg-primariohover rounded-md">Escribir</a>
 			</div>
