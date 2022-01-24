@@ -19,6 +19,8 @@ module.exports = {
             primariopastel: "#D2E8E8",
             primariomedio: "#8CBBBB",
             primariofondo: "#E0EEEB",
+            errortexto: "#D32F2F",
+            errorfondo: "#FFCDD2",
             beige: "#647C76",
             azul: "#30557D",
             celeste: "#6587B2",
