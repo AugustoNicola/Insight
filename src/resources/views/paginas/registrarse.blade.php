@@ -19,7 +19,7 @@
 	
 	@csrf
 	<div class="flex flex-row flex-nowrap justify-end items-center">
-		<button type="submit" class="w-fit mt-3 px-6 py-2 font-ui font-medium text-2xl bg-primario hover:bg-primariohover rounded-md">Registrate</button>
+		<button type="submit" class="w-fit mt-3 px-6 py-2 font-ui font-medium text-blanco text-2xl bg-primario hover:bg-primariohover rounded-md">Registrate</button>
 	</div>
 </form>
 
