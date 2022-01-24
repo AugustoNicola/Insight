@@ -430,6 +430,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: 0.75rem;
   margin-right: 0.75rem;
 }
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+.my-3 {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
 .ml-3 {
   margin-left: 0.75rem;
 }
@@ -481,6 +489,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .aspect-square {
   aspect-ratio: 1 / 1;
 }
+.aspect-video {
+  aspect-ratio: 16 / 9;
+}
 .h-full {
   height: 100%;
 }
@@ -495,6 +506,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .h-12 {
   height: 3rem;
+}
+.h-16 {
+  height: 4rem;
+}
+.h-\[30vw\] {
+  height: 30vw;
 }
 .max-h-max {
   max-height: -webkit-max-content;
@@ -535,6 +552,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .w-12 {
   width: 3rem;
+}
+.max-w-lg {
+  max-width: 32rem;
+}
+.max-w-md {
+  max-width: 28rem;
 }
 .flex-none {
   flex: none;
@@ -623,6 +646,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .overflow-y-hidden {
   overflow-y: hidden;
 }
+.overflow-x-scroll {
+  overflow-x: scroll;
+}
 .rounded-lg {
   border-radius: 0.5rem;
 }
@@ -635,12 +661,18 @@ Ensure the default browser behavior of the `hidden` attribute.
 .rounded-xl {
   border-radius: 0.75rem;
 }
+.rounded-2xl {
+  border-radius: 1rem;
+}
 .rounded-l-lg {
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
 }
 .border-\[3px\] {
   border-width: 3px;
+}
+.border-2 {
+  border-width: 2px;
 }
 .border-b-\[3px\] {
   border-bottom-width: 3px;
@@ -725,6 +757,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 .pb-6 {
   padding-bottom: 1.5rem;
@@ -834,6 +874,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .ease-in-out {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+.\[scrollbar-width\:none\] {
+  scrollbar-width: none;
+}
 .hover\:bg-grisoscuro:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(124 124 124 / var(--tw-bg-opacity));
@@ -841,6 +884,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .hover\:bg-primariohover:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(10 59 52 / var(--tw-bg-opacity));
+}
+.hover\:bg-gris:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(197 197 197 / var(--tw-bg-opacity));
 }
 .hover\:text-negrohover:hover {
   --tw-text-opacity: 1;
@@ -865,6 +912,18 @@ Ensure the default browser behavior of the `hidden` attribute.
 .group:hover .group-hover\:text-primariohover {
   --tw-text-opacity: 1;
   color: rgb(10 59 52 / var(--tw-text-opacity));
+}
+.peer:checked ~ .peer-checked\:bg-primario {
+  --tw-bg-opacity: 1;
+  background-color: rgb(7 94 82 / var(--tw-bg-opacity));
+}
+.peer:checked ~ .peer-checked\:text-blanco {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+.peer:checked ~ .peer-checked\:hover\:bg-primariohover:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(10 59 52 / var(--tw-bg-opacity));
 }
 @media (min-width: 768px) {
 
@@ -1171,6 +1230,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   .lg\:text-base {
     font-size: 1rem;
     line-height: 1.5rem;
+  }
+
+  .lg\:\[scrollbar-width\:auto\] {
+    scrollbar-width: auto;
   }
 }
 @media (min-width: 1280px) {
