@@ -25,13 +25,15 @@
     <!-- Icons -->
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 </head>
-    <body class="bg-fondo overflow-x-hidden">
+    <body class="bg-fondo overflow-x-hidden min-h-screen m-0 flex flex-row flex-wrap justify-center"> 
     @include("utilidades.header")
     
     
     @include("utilidades.errores")
     
-    @yield("contenido")
+    <div class="w-full">
+        @yield("contenido")
+    </div>
     
     @include("utilidades.footer")
     </body>
