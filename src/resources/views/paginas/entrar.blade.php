@@ -3,18 +3,15 @@
 @section("titulo", "Iniciar Sesión")
 
 @section('contenido')
-<form method="POST">
-	<h1 class="text-3xl font-bold underline">
-		Hello world!
-	</h1>
-	
+<h1 class="my-6 font-titulo font-bold text-center text-negro text-3xl">Iniciar Sesión</h1>
+<form method="POST" class="lg:max-w-screen-sm lg:mx-auto px-4 pb-6 flex flex-col flex-nowrap gap-10">
 	@csrf
-	<label for="nombre">nombre</label>
-	<input type="text" name="nombre" id="nombre" value={{old("nombre")}}>
+	<input type="text" name="nombre" id="nombre" placeholder="Nombre" value="{{old("nombre")}}" class="bg-fondo font-ui text-2xl border-b-[3px] border-gris">	
+	<input type="password" name="contrasena" id="contrasena" placeholder="Contraseña" class="bg-fondo font-ui text-2xl border-b-[3px] border-gris">
 	
-	<label for="contrasena">Contraseña</label>
-	<input type="text" name="contrasena" id="contrasena" value={{old("contrasena")}}>
-	
-	<button type="submit">Enviar!</button>
+	<div class="flex flex-row flex-nowrap justify-around items-center">
+		<a href="/registrarse" class="mt-3 px-6 py-2 font-ui font-medium text-2xl bg-gris hover:bg-grisoscuro hover: rounded-md">Registate</a>
+		<button type="submit" class="mt-3 px-6 py-2 font-ui font-medium text-2xl bg-primario hover:bg-primariohover rounded-md">Entrar</button>
+	</div>
 </form>
 @endsection
