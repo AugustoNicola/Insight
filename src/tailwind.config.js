@@ -31,6 +31,10 @@ module.exports = {
             blancohover: "#B0B0B0",
             negro: "#2C2C2C",
             negrohover: "#494949",
+            editar: "#FB923C",
+            editarhover: "#F97316",
+            eliminar: "#DC2626",
+            eliminarhover: "#B91C1C",
         },
         fontFamily: {
             titulo: ["Domine", "sans-serif"],

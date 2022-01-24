@@ -41,7 +41,7 @@
 		</div>
 		
 		@else
-		<h3 class="mt-3 font-ui font-medium text-grisoscuro text-xl">No se han encontrado categorías.</h2>
+		<h3 class="mt-3 font-ui font-medium text-grisoscuro text-xl">No se han encontrado categorías.</h3>
 		@endif
 	</aside>
 </div>

@@ -2,7 +2,7 @@
     <a href="/publicaciones/{{$publicacion->id}}" class="basis-1/4 flex-none border-r-2 border-negro rounded-l-lg">
         <img src="{{$publicacion->portada != null ? "/storage/publicaciones/" . $publicacion->portada : "/assets/sinportada.png"}}" alt="Imagen de publicación" class="h-full aspect-square rounded-l-lg hover:brightness-105" >
     </a>
-    <div class="py-2 flex flex-col flex-nowrap justify-around items-start">
+    <div class="grow py-2 flex flex-col flex-nowrap justify-around items-start">
         <a class="font-titulo font-medium text-negro hover:text-negrohover text-lg md:text-xl" href="/publicaciones/{{$publicacion->id}}">{{$publicacion->titulo}}</a>
         <div class="flex flex-row flex-wrap justify-start items-center gap-2">
             @foreach($publicacion->categorias()->get() as $categoria)
@@ -19,12 +19,16 @@
     </div>
     @switch($tipo)
     @case("editable")
-    <div class="acciones">
-        <a href="/publicaciones/{{$publicacion->id}}/editar" class="editar">Ed</a>
+    <div class="basis-1/6 grow-0 shrink-0 flex flex-col flex-nowrap justify-around items-center">
+        <a href="/publicaciones/{{$publicacion->id}}/editar" class="">
+            <i class="p-1 bx bxs-pencil text-4xl text-blanco bg-editar hover:bg-editarhover rounded-lg"></i>
+        </a>
         <form action="/publicaciones/{{$publicacion->id}}" method="POST">
             @method('DELETE')
             @csrf
-            <button type="submit" class="eliminar">El</button>
+            <button type="submit" class="">
+                <i class="p-1 bx bxs-trash-alt text-4xl text-blanco bg-eliminar hover:bg-eliminarhover rounded-lg"></i>
+            </button>
         </form>
     </div>
     @break
