@@ -21,7 +21,7 @@
 	
 	<h3 class="mb-2 font-ui font-semibold text-2xl text-center">Categorías</h3>
 	
-	<div class="flex flex-row flex-nowrap overflow-x-scroll [scrollbar-width:none] lg:[scrollbar-width:auto] gap-3">
+	<div class="py-3 flex flex-row flex-nowrap overflow-x-scroll [scrollbar-width:none] lg:[scrollbar-width:auto] gap-3">
 		@foreach ($categorias as $categoria)
 		<div>
 			<input type="checkbox" name="categorias[]" id="categoria{{$categoria->id}}" value="{{$categoria->id}}" class="peer hidden" />
