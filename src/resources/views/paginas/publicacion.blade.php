@@ -84,7 +84,7 @@
 			@foreach($publicacion->comentarios as $comentario)
 			<div class="flex flex-row flex-nowrap justify-between items-start">
 				<div class="mr-4 w-10 h-10 md:w-10 md:h-10">
-					<img src="{{$publicacion->autore()->first()->imagen != null ? "/storage/usuaries/" . $publicacion->autore()->first()->imagen : "/assets/usuariedefault.png"}}" alt="{{$publicacion->autore()->first()->nombre}}" class="rounded-full ring-offset-2 ring-4 ring-grisoscuro" >
+					<img src="{{$comentario->usuarie->imagen != null ? "/storage/usuaries/" . $comentario->usuarie->imagen : "/assets/usuariedefault.png"}}" alt="{{$comentario->usuarie->nombre}}" class="rounded-full ring-offset-2 ring-4 ring-grisoscuro" >
 				</div>
 				
 				<div class="basis-full">
