@@ -206,7 +206,7 @@ class ControladorUsuarie extends Controller
             $request->only(["nombre", "contrasena", "contrasena_confirmation", "imagen"]),
             [
                 "nombre" => "required|between:3,100",
-                "contrasena" => "between:3,40|confirmed",
+                "contrasena" => "nullable|between:3,40|confirmed",
                 "imagen" => "bail|image|mimes:jpg,png,jpeg|max:2048|dimensions:min_width=100,min_height=100,max_width=5000,max_height=5000"
             ],
             [

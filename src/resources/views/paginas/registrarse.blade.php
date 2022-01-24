@@ -23,5 +23,5 @@
 	</div>
 </form>
 
-<script src="{{ asset('js/registrarse.js') }}"></script>
+<script src="{{ asset('js/formularioUsuarie.js') }}"></script>
 @endsection
