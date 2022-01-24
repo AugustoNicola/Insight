@@ -36,5 +36,5 @@
 	</div>
 </form>
 
-<script src="{{ asset('js/escribir.js') }}"></script>
+<script src="{{ asset('js/formularioPublicacion.js') }}"></script>
 @endsection
