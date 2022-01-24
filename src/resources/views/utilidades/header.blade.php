@@ -1,5 +1,5 @@
 <div class="flex flex-col flex-nowrap items-end w-screen">
-	<div class="basis-full w-screen max-h-[6rem] pr-4 py-4 bg-primariopastel border-b-[3px] border-primario z-10">
+	<div class="basis-full w-screen max-h-[6rem] px-4 py-4 bg-primariopastel border-b-[3px] border-primario z-10">
 		<div class="flex flex-row flex-nowrap justify-between items-center md:container md:mx-auto">
 			<a href="/" class="group flex flex-row items-center">
 				<svg class="inline w-10 md:w-12 text-primario group-hover:text-primariohover" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0, 0, 400,400">
