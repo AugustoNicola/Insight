@@ -34,8 +34,12 @@
     @break
     
     @case("guardable")
-    <div class="acciones">
-        <button id="boton-desguardar">Dg</button>
+    <div class="basis-1/6 grow-0 shrink-0 flex flex-col flex-nowrap justify-center items-center">
+        @csrf
+        <input type="hidden" name="publicacion-id" value="{{$publicacion->id}}">
+        <button class="boton-desguardar">
+            <i class="p-1 bx bxs-bookmark-minus text-4xl text-blanco bg-guardar hover:bg-guardarhover rounded-lg"></i>
+        </button>
     </div>
     @break
     

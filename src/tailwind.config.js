@@ -23,7 +23,6 @@ module.exports = {
             errorfondo: "#FFCDD2",
             beige: "#647C76",
             azul: "#30557D",
-            celeste: "#6587B2",
             fondo: "#dedede",
             blanco: "#FFFFFF",
             gris: "#c5c5c5",
@@ -35,6 +34,8 @@ module.exports = {
             editarhover: "#F97316",
             eliminar: "#DC2626",
             eliminarhover: "#B91C1C",
+            guardar: "#0EA5E9",
+            guardarhover: "#0284C7",
         },
         fontFamily: {
             titulo: ["Domine", "sans-serif"],

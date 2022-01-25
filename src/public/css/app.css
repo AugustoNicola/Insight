@@ -498,14 +498,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-8 {
   height: 2rem;
 }
+.h-24 {
+  height: 6rem;
+}
 .h-32 {
   height: 8rem;
 }
 .h-10 {
   height: 2.5rem;
-}
-.h-24 {
-  height: 6rem;
 }
 .h-12 {
   height: 3rem;
@@ -530,6 +530,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .w-8 {
   width: 2rem;
 }
+.w-24 {
+  width: 6rem;
+}
 .w-fit {
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -541,9 +544,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .w-10 {
   width: 2.5rem;
 }
-.w-24 {
-  width: 6rem;
-}
 .w-14 {
   width: 3.5rem;
 }
@@ -552,9 +552,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .w-12 {
   width: 3rem;
-}
-.w-16 {
-  width: 4rem;
 }
 .max-w-md {
   max-width: 28rem;
@@ -603,9 +600,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .items-center {
   align-items: center;
-}
-.items-stretch {
-  align-items: stretch;
 }
 .justify-start {
   justify-content: flex-start;
@@ -716,17 +710,29 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-bg-opacity: 1;
   background-color: rgb(210 232 232 / var(--tw-bg-opacity));
 }
+.bg-editar {
+  --tw-bg-opacity: 1;
+  background-color: rgb(251 146 60 / var(--tw-bg-opacity));
+}
+.bg-eliminar {
+  --tw-bg-opacity: 1;
+  background-color: rgb(220 38 38 / var(--tw-bg-opacity));
+}
+.bg-guardar {
+  --tw-bg-opacity: 1;
+  background-color: rgb(14 165 233 / var(--tw-bg-opacity));
+}
 .bg-grisoscuro {
   --tw-bg-opacity: 1;
   background-color: rgb(124 124 124 / var(--tw-bg-opacity));
 }
-.bg-blanco {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
 .bg-primario {
   --tw-bg-opacity: 1;
   background-color: rgb(7 94 82 / var(--tw-bg-opacity));
+}
+.bg-blanco {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 .bg-gris {
   --tw-bg-opacity: 1;
@@ -740,25 +746,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-bg-opacity: 1;
   background-color: rgb(8 80 70 / var(--tw-bg-opacity));
 }
-.bg-editar {
-  --tw-bg-opacity: 1;
-  background-color: rgb(251 146 60 / var(--tw-bg-opacity));
-}
-.bg-eliminar {
-  --tw-bg-opacity: 1;
-  background-color: rgb(220 38 38 / var(--tw-bg-opacity));
-}
 .p-4 {
   padding: 1rem;
 }
 .p-1 {
   padding: 0.25rem;
-}
-.p-8 {
-  padding: 2rem;
-}
-.p-12 {
-  padding: 3rem;
 }
 .py-2 {
   padding-top: 0.5rem;
@@ -767,6 +759,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 .px-3 {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
+}
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 .px-8 {
   padding-left: 2rem;
@@ -779,14 +779,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
-}
-.px-6 {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
 }
 .py-6 {
   padding-top: 1.5rem;
@@ -818,6 +810,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   font-size: 1.125rem;
   line-height: 1.75rem;
 }
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
@@ -833,10 +829,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-base {
   font-size: 1rem;
   line-height: 1.5rem;
-}
-.text-4xl {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
 }
 .text-5xl {
   font-size: 3rem;
@@ -907,18 +899,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .\[scrollbar-width\:none\] {
   scrollbar-width: none;
 }
-.hover\:bg-gris:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(197 197 197 / var(--tw-bg-opacity));
-}
-.hover\:bg-primariohover:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(10 59 52 / var(--tw-bg-opacity));
-}
-.hover\:bg-grisoscuro:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(124 124 124 / var(--tw-bg-opacity));
-}
 .hover\:bg-editarhover:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(249 115 22 / var(--tw-bg-opacity));
@@ -926,6 +906,22 @@ Ensure the default browser behavior of the `hidden` attribute.
 .hover\:bg-eliminarhover:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(185 28 28 / var(--tw-bg-opacity));
+}
+.hover\:bg-guardarhover:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(2 132 199 / var(--tw-bg-opacity));
+}
+.hover\:bg-primariohover:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(10 59 52 / var(--tw-bg-opacity));
+}
+.hover\:bg-gris:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(197 197 197 / var(--tw-bg-opacity));
+}
+.hover\:bg-grisoscuro:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(124 124 124 / var(--tw-bg-opacity));
 }
 .hover\:text-negrohover:hover {
   --tw-text-opacity: 1;
