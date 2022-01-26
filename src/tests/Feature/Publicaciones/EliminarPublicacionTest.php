@@ -45,7 +45,7 @@ class EliminarPublicacionTest extends TestCase
         $responseEliminarPublicacion = $this->actingAs($usuarie)->delete("/publicaciones/" . $publicacion->id);
 
         $responseEliminarPublicacion->assertStatus(302); // 302: Found
-        $responseEliminarPublicacion->assertRedirect("/publicaciones/");
+        $responseEliminarPublicacion->assertRedirect("/perfil");
         $responseEliminarPublicacion->assertSessionHasNoErrors();
         $responseEliminarPublicacion->assertSessionHas("exito", "La publicación fue eliminada correctamente.");
         assertFalse(Storage::disk("public")->exists("publicaciones/" . $archivo->hashName()));
@@ -74,7 +74,7 @@ class EliminarPublicacionTest extends TestCase
         $responseEliminarPublicacion = $this->actingAs($usuarie)->delete("/publicaciones/" . $publicacion->id);
 
         $responseEliminarPublicacion->assertStatus(302); // 302: Found
-        $responseEliminarPublicacion->assertRedirect("/publicaciones/");
+        $responseEliminarPublicacion->assertRedirect("/perfil");
         $responseEliminarPublicacion->assertSessionHasNoErrors();
         $responseEliminarPublicacion->assertSessionHas("exito", "La publicación fue eliminada correctamente.");
         assertEquals(0, Models\Publicacion::count());

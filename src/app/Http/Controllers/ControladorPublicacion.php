@@ -290,7 +290,7 @@ class ControladorPublicacion extends Controller
         }
         $publicacion->delete(); // eliminamos publicacion de la BBDD
 
-        return redirect("/publicaciones", 302)->with([
+        return redirect("/perfil", 302)->with([
             "exito" => "La publicación fue eliminada correctamente."
         ]); // 302: Found
     }

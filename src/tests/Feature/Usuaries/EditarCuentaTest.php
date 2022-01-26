@@ -53,7 +53,7 @@ class EditarCuentaTest extends TestCase
         $usuarie = Models\Usuarie::factory()->create();
 
         $nuevoNombre = $this->faker->name();
-        $nuevaContrasena = $this->faker->word();
+        $nuevaContrasena = $this->faker->password(4, 10);
 
         $response = $this->actingAs($usuarie)->from("/perfil/editar")->put("/perfil", [
             "nombre" => $nuevoNombre,
@@ -145,7 +145,7 @@ class EditarCuentaTest extends TestCase
         //# contrasenas no coinciden
         $responseContrasenasNoCoinciden = $this->actingAs($usuarie)->from("/perfil/editar")->put("/perfil", [
             "nombre" => $nuevoNombre,
-            "contrasena" => $this->faker->word(),
+            "contrasena" => $this->faker->password(4, 10),
             "contrasena_confirmation" => "123"
         ]);
 
