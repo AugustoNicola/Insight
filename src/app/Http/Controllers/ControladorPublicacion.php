@@ -105,6 +105,12 @@ class ControladorPublicacion extends Controller
 
     public function vistaPublicarPublicacion()
     {
+        if (Auth::guest()) {
+            return redirect("/entrar")->withErrors([
+                "autenticacion" => "Para poder escribir una publicación primero es necesario iniciar sesión."
+            ])->withInput(); // 303: See Other
+        }
+
         $categorias = Models\Categoria::All();
 
         return view("paginas.escribir", [

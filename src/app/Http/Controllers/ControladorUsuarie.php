@@ -13,6 +13,11 @@ class ControladorUsuarie extends Controller
 {
     public function vistaRegistrarse()
     {
+        if (Auth::check()) {
+            return redirect("/publicaciones", 303)->withErrors([
+                "autenticacion" => "Ya has iniciado sesión."
+            ])->withInput(); // 303: See Other
+        }
         return view("paginas.registrarse");
     }
 
@@ -67,6 +72,11 @@ class ControladorUsuarie extends Controller
 
     public function vistaEntrar()
     {
+        if (Auth::check()) {
+            return redirect("/publicaciones", 303)->withErrors([
+                "autenticacion" => "Ya has iniciado sesión."
+            ])->withInput(); // 303: See Other
+        }
         return view("paginas.entrar");
     }
 
