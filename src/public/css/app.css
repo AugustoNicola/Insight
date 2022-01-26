@@ -878,6 +878,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .font-normal {
   font-weight: 400;
 }
+.font-extrabold {
+  font-weight: 800;
+}
 .italic {
   font-style: italic;
 }
