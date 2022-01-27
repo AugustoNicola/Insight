@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         DB::table("publicaciones")->truncate();
         DB::table("categorias")->truncate();
         DB::table("usuaries")->truncate();
-        DB::statement("SET FOREIGN_KEY_CHECKS = 1");
+        //DB::statement("SET FOREIGN_KEY_CHECKS = 1");
 
 
         $usuaries = json_decode(file_get_contents(database_path("datos/Usuaries.json"), true));
