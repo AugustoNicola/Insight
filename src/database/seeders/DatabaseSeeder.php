@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         DB::table("publicaciones")->truncate();
         DB::table("categorias")->truncate();
         DB::table("usuaries")->truncate();
-        //DB::statement("SET FOREIGN_KEY_CHECKS = 1");
+        DB::statement("SET FOREIGN_KEY_CHECKS = 1");
 
 
         $usuaries = json_decode(file_get_contents(database_path("datos/Usuaries.json"), true));
@@ -56,7 +56,9 @@ class DatabaseSeeder extends Seeder
                 "portada" => $publicacion->portada
             ]);
 
-            $publicacionCreada->categorias()->attach($publicacion->categorias);
+            foreach ($publicacion->categorias as $categoria) {
+                $publicacionCreada->categorias()->attach($categoria);
+            }
             $publicacionCreada->reacciones()->attach(Models\Usuarie::all()->random(rand(1, 7))->pluck('id')->toArray(), ["relacion" => Arr::random(["me_gusta", "guardar"])]);
         }
 
