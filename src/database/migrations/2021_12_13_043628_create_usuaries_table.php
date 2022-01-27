@@ -18,8 +18,8 @@ class CreateUsuariesTable extends Migration
             $table->string("nombre", 100);             # VARCHAR(100)
             $table->string("contrasena", 191);         # VARCHAR(191)
             $table->string("imagen", 100)->nullable(); # VARCHAR(100)
-            $table->timestamp("fecha_creacion");       # TIMESTAMP
-            $table->timestamp("fecha_actualizacion");  # TIMESTAMP
+            $table->timestamp("fecha_creacion")->nullable();       # TIMESTAMP
+            $table->timestamp("fecha_actualizacion")->nullable();  # TIMESTAMP
         });
     }
 

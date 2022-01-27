@@ -18,8 +18,8 @@ class CreateComentariosTable extends Migration
             $table->longText("cuerpo");                   # LONGTEXT
             $table->unsignedBigInteger("publicacion_id"); # FK, UNSIGNED BIGINT
             $table->unsignedBigInteger("usuarie_id");     # FK, UNSIGNED BIGINT
-            $table->timestamp("fecha_creacion");          # TIMESTAMP
-            
+            $table->timestamp("fecha_creacion")->nullable();          # TIMESTAMP
+
             $table->foreign("publicacion_id")->references("id")->on("publicaciones");
             $table->foreign("usuarie_id")->references("id")->on("usuaries");
         });

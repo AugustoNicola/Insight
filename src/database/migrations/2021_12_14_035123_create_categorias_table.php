@@ -17,7 +17,7 @@ class CreateCategoriasTable extends Migration
             $table->id("id");                    # PK, UNSIGNED BIGINT
             $table->string("nombre", 50);        # VARCHAR(50)
             $table->longText("descripcion");     # LONGTEXT
-            $table->timestamp("fecha_creacion"); # TIMESTAMP
+            $table->timestamp("fecha_creacion")->nullable(); # TIMESTAMP
         });
     }
 
