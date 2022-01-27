@@ -57,7 +57,7 @@ class DatabaseSeeder extends Seeder
             ]);
 
             foreach ($publicacion->categorias as $categoria) {
-                $publicacionCreada->categorias()->attach($categoria);
+                $publicacionCreada->categorias()->attach(Models\Categoria::find($categoria));
             }
             $publicacionCreada->reacciones()->attach(Models\Usuarie::all()->random(rand(1, 7))->pluck('id')->toArray(), ["relacion" => Arr::random(["me_gusta", "guardar"])]);
         }
