@@ -1,0 +1,42 @@
+[
+	{
+		"nombre": "Andreas Corelli",
+		"imagen": "andreas-corelli.jpg"
+	},
+	{
+		"nombre": "Clara Barceló",
+		"imagen": "clara-barcelo.jpg"
+	},
+	{
+		"nombre": "Daniel Sempere",
+		"imagen": "daniel-sempere.jpg"
+	},
+	{
+		"nombre": "David Martín",
+		"imagen": "david-martin.jpg"
+	},
+	{
+		"nombre": "Fermín Romero de Torres",
+		"imagen": "fermin-romero-de-torres.jpg"
+	},
+	{
+		"nombre": "Isabella Gutiérrez",
+		"imagen": "isabella-gutierrez.jpg"
+	},
+	{
+		"nombre": "Laín Coubert",
+		"imagen": "lain-coubert.jpg"
+	},
+	{
+		"nombre": "Nuria Monfort",
+		"imagen": "nuria-monfort.jpg"
+	},
+	{
+		"nombre": "Pedro Vidal",
+		"imagen": "pedro-vidal.jpg"
+	},
+	{
+		"nombre": "Víctor Grandes",
+		"imagen": "victor-grandes.jpg"
+	}
+]

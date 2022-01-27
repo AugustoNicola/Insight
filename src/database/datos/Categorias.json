@@ -1,0 +1,26 @@
+[
+	{
+        "nombre": "clima",
+        "descripcion": "Informes del tiempo para los próximos días, con predicciones de temperaturas y probabilidad de lluvia."
+    },
+    {
+        "nombre": "cocina",
+        "descripcion": "Las mejores recetas del momento y consejos para una alimentación sana y económica."
+    },
+    {
+        "nombre": "deportes",
+        "descripcion": "Resultados de los últimos partidos, fichajes de clubes recientes y opiniones de expertos."
+    },
+    {
+        "nombre": "entretenimiento",
+        "descripcion": "Reseñas de las series y películas del momento, con noticias de lanzamientos venideros."
+    },
+    {
+        "nombre": "internacional",
+        "descripcion": "Acontecimientos importantes de todas partes del mundo, con cobertura en español."
+    },
+    {
+        "nombre": "tecnología",
+        "descripcion": "Los últimos gadgets, lanzamientos de teléfonos y avances impresionantes en robótica e informática."
+    }
+]
