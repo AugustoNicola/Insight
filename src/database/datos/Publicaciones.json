@@ -1,34 +1,34 @@
 [{
         "titulo": "Estados Unidos declara estado de emergencia debido a tornados en la costa este",
-        "categorias": [1, 5],
+        "categorias": [1, 41],
         "portada": "eeuu-tornado.jpg",
 
-        "cuerpo": "El presidente estadounidense, Joe Biden, declaró la emergencia meteorológica en el estado de Florida debido a la reciente oleada de tornados que arrasa actualmente con la región este del país.\nSegún los más recientes informes lanzados por el Departamento de Control de Catástrofes de los Estados Unidos, el saldo total hasta la fecha alcanza los 23 muertos, 304 heridos y millones de dólares en daños materiales.\nLos meteorólogos advierten que la serie de fuertes tornados iniciada hace 4 días podría extenderse hasta el final de la semana, ocasionando aún más daños."
+        "cuerpo": "El presidente estadounidense, Joe Biden, declaró la emergencia meteorológica en el estado de Florida debido a la reciente oleada de tornados que arrasa actualmente con la región este del país.\nSegún los más recientes informes lanzados por el Departamento de Control de Catástrofes de los Estados Unidos, el saldo total hasta la fecha alcanza los 23 muertos, 304 heridos y millones de dólares en daños materiales.\nLos meteorólogos advierten que la serie de fuertes tornados iniciada hace cuatro dias días podría extenderse hasta el final de la semana, ocasionando aún más daños."
     },
     {
         "titulo": "Cómo hacer los tacos de verduras tal como hacen los mexicanos",
-        "categorias": [2, 5],
+        "categorias": [11, 41],
         "portada": "tacos-mexicanos.jpg",
 
         "cuerpo": "Es innegable, la popularidad del plato estrella de la gastronomía mexicana creció exponencialmente en los últimos años como parte de las nuevas tendencias culinarias en puestos de comida urbanos. Con sinfín de rellenos y toppings, el taco se ha convertido en una de las comidas más populares en nuestro país. En esta nota te proponemos una receta para deleitarse con este manjar desde casa.\nPara empezar, los ingredientes: para el relleno vamos a necesitar una cebolla morada, dos dientes de ajo, un chile, pimiento o morrón (puede ser tanto rojo como verde), tomate; y por supuesto la masa de tacos.\n¡Hacer el relleno es bastante fácil! Cortamos los morrones y la cebolla en julana, el ajo y chile bien bien pequeño, y el tomate en cubitos. En una sartén ponemos un chorro de aceite y rehogamos la cebolla, morrón, ajo y chile por unos minutos. Luego agregamos el tomate y rehogamos por un minuto más. Por otro lado, vamos calentando en una plancha las tortillas hasta el punto deseado, y simplemente rellenamos. ¡Listo!"
     },
     {
         "titulo": "La famosa jugadora de volley Estela Martínez se presentará en un show de preguntas",
-        "categorias": [3, 4],
+        "categorias": [21, 31],
         "portada": "jugadora-volley.jpg",
 
         "cuerpo": "La galardonada jugadora estrella del equipo nacional de volley argentino, Estela Martínez, anunció por sus redes sociales que el próximo Viernes estará participando en el conocido show de preguntas \"Quién Sabe Más\", para competir por el millón de pesos que se ofrece de premio.\nSin embargo, Estela Martínez no es una cara desconocida para la televisión: ha aparecido ya en múltiples entrevistas luego de sus numerosas victorias de los últimos años. Tras haber empezado su carrera deportiva hace ya siete años, su éxito no ha hecho más que crecer.\nLa próxima participante hace muestra de su emoción a través de sus redes por poder jugar en el show: \"Amo el programa desde que fue lanzado; lo veo con mi familia todas las noches. Tener la oportunidad de estar realmente ahí me parece mágico, ¡no puedo esperar!\" — comenta en su perfil de Instagram."
     },
     {
         "titulo": "Compañía galesa lanza el primer equipo de VR que permite sentir el tacto en todo el cuerpo",
-        "categorias": [6],
+        "categorias": [51],
         "portada": "vr.jpg",
 
         "cuerpo": "La startup Dyconekt ha lanzado el pasado Lunes su versión final de Kinekt, un equipo completo de realidad virtual capaz de emitir reacciones táctiles a cualquier parte del cuerpo. Este anuncio ha dejado espectante a todo el mercado de la tecnología, ya que abre un abanico de posibilidades únicas en el campo de la realidad virtual y realidad aumentada.\nDyconekt es una pequeña compañía ubicada en Cardiff, la capital de Gales. Concebida en 2013, la startup siempre se ha especializado en el uso de cascos y equipamiento de realidad virtual para crear sus productos, algunos de los cuales marcaron cierto éxito en su momento. Sin embargo, ninguna de sus previas incursiones causó tanto furor como su nuevo producto.\nEl Kinekt consiste en un equipo de realidad virtual convencional, con su casco óptico y controles manuales, al que se le hace una adición espectacular: un traje háptico de cuerpo completo. Esta última pieza, que se asemeja a un traje de buzo ultrafino y hecho de un material similar a la tela, se sincroniza con el resto del conjunto para saber cuándo dar minúsculas vibraciones que se trasmiten a tacto en nuestros cuerpos. Esto permite experimentar desde un golpe al más suave roce, sin peligro de recibir un daño real."
     },
     {
         "titulo": "La cantante Malena Pradón presentó un adelanto de su próximo disco",
-        "categorias": [4, 5],
+        "categorias": [31, 41],
         "portada": "cantante-disco.jpg",
 
         "cuerpo": "La solista española acaba de anunciar por sus redes el lanzamiento de su próximo disco, Luz Escarlata, pronosticado para mediados del próximo mes. La entrega constará de ocho nuevos temas, de los cuales aún no se tiene mucha información, más regrabaciones de tres de sus temas más conocidos: Y Tú Qué Quieres, Anochecer A Solas, y Bajo la Luz de la Luna.\n\"Estoy muy contenta de poder contaros de este nuevo disco; el equipo y yo hemos trabajado muy duro para realizarlo. ¡Creo que vais a disfrutarlo mucho!\" — comenta en su cuenta de Twitter."
@@ -42,98 +42,98 @@
     },
     {
         "titulo": "Una ONG italiana lanza su primer prototipo de prótesis apta para deportes de alto riesgo",
-        "categorias": [3, 5, 6],
+        "categorias": [21, 41, 51],
         "portada": "protesis-deportes.jpg",
 
         "cuerpo": "La organización sin fines de lucro Rotary ya ha comenzado a repartir de forma gratuita su último modelo de prótesis, que es capaz de soportar las condiciones físicas de múltiples deportes de riesgo.\nLa directora general de la ONG, Julia Talia, informó en un comunicado de prensa: \"Aunque nuestra organización viene ayudando a las personas com movilidad limitada a llevar una vida normal a través de prótesis, éramos conscientes de que muchas y muchos sentían una barrera a la hora de practicar algunas actividades con un esfuerzo físico mayor, como pueden ser algunos deportes. Rotary quiere ayudar a que las personas con amputaciones también sientan que pueden realizar estas actividades, y por esto pusimos especial énfasis en desarrollar una prótesis capaz de resistir las condiciones que se dan en estas actividades extremas\".\nTalia también agradece al gobierno italiano por subsidiar de forma total los gastos del equipo de desarrollo, lo que permitió llevar a la realidad este ambicioso proyecto."
     },
     {
         "titulo": "Se viene la lluvia: recetas ideales para hacer en días fríos",
-        "categorias": [1, 2],
+        "categorias": [1, 11],
         "portada": "comida-lluvia.jpg",
 
         "cuerpo": "Con el último informe meteorológico que anuncia precipitaciones para los próximos cuatro días, todo el mundo ya ha empezado a cancelar sus planes al aire libre y pensar en actividades para hacer en casa. ¡Pero no nos olvidemos de la comida! En esta nota te traemos algunas recetas calientes para hacer en estos días de frío.\nUna primera opción que nunca falla es el guiso: con tan solo unas lentejas y unas cuantas verduras como papa, zanahoria, cebolla y morrones, ¡y está hecho!\nOtra excelente idea es sopa: aunque no se acostumbra en esta época del año debido al calor que suele haber, estos días de fresco nos brindan la posibilidad de volver a disfrutar de una buena sopa. Para hacerla recomendamos choclo, cebolla de verdeo, porotos y tomates."
     },
     {
         "titulo": "Científicos logran crear una inteligencia artifical capaz de predecir el resultado de partidos de fútbol",
-        "categorias": [3, 6],
+        "categorias": [21, 51],
         "portada": "ai-futbol.jpg",
 
         "cuerpo": "El campo de la Inteligencia Artificial (AI) no para de crecer, y muestra de ello es el último experimento de unos científicos nacionales, que lograron concebir una inteligencia capaz de pronosticar el resultado de partidos de fútbol que aún no se han jugado.\nPara lograr la hazaña, los investigadores crearon una red neuronal y la suministraron con un volumen enorme de datos de partidos ya jugados, con información de los equipos, condiciones climáticas, jugadores y DT presentes, etc.\nCon esta carga titánica de información, la red aprendió a analizar qué factores determinan la victoria de un equipo por sobre el otro, y para el final del experimento se obtuvo que con solo suministrarle el nombre de los equipos, la AI puede predecir quién saldra vencedor con una probabilidad de acierto de un 91%."
     },
     {
         "titulo": "Tragedia tras gran incendio en el norte de Haití",
-        "categorias": [5],
+        "categorias": [41],
         "portada": "incendio-haiti.jpg",
 
         "cuerpo": "Más de cincuenta personas resultaron heridas y otras dos fallecieron como consecuencia de la secuenca de incencios ocurridos el pasado Miércoles en el norte de Haití, según el balance de la Dirección de Protección Civil de Haití.\n\"El incendio se originó en la zona rural de la pequeña ciudad de Camp Coq, muy probablemente debido a las condiciones de sequedad y calor arrasador que se registraron en las últimas semanas\" — explica el informe de hoy.\nLas autoridades informan también que la situación ya se encuentra completamente bajo control, con todos los focos de acción del incencio completamente apagados."
     },
     {
         "titulo": "Club Atlético Estel arrasa con Defensores de Villareal con un flamante resultado de 5 a 0",
-        "categorias": [3],
+        "categorias": [21],
         "portada": "partido.jpg",
 
         "cuerpo": "El último partido restante de cuartos de finales de la Liga Nacional de Fútbol terminó con un balance abrumador de cinco puntos a cero, con la espectacular victoria de Atlético Estel. Durante todo el encuentro se pudo apreciar el control total del balón por parte del ganador, con especial participación de sus mediocampistas Julio Álvarez y David Estera.\nDe esta forma Villareal queda excluido de la liga por este año, y Estel avanza a semifinales para su próximo partido con Tronadores de Campbell."
     },
     {
         "titulo": "El gigante tecnológico japonés Itchome lanza su último modelo de teléfono",
-        "categorias": [5, 6],
+        "categorias": [41, 51],
         "portada": "itchome.jpg",
 
         "cuerpo": "El titán de las telecomunicaciones Itchome Corp., con sede central en Tokyo, Japón, acaba de presentar en la Conferencia Mundial de Tecnología su más reciente modelo de dispositivo móvil, el ItchPhone 100.\nLa principal novedad de esta nueva entrega en comparación a sus antecesores es el considerable aumento de resolución de su cámara delantera, pasando de 12MP a 20MP, una verdadera hazaña. Esta cifra es ampliamente superior a la de sus competidores más avanzados, como Guby Inc., cuyo último modelo, el Gaia Lambda, alcanza los 16MP.\nLa compañía anunció su deseo de continuar liderando el desarrollo tecnológico en el área de las cámaras, aspecto que hizo tan famoso a sus productos en el pasado, y que sigue logrando tal efecto con este nuevo lanzamiento."
     },
     {
         "titulo": "El tenista Frederick Dwadsky gana la Copa Europea de Tenis por quinto año consecutivo",
-        "categorias": [3, 4, 5],
+        "categorias": [21, 31, 41],
         "portada": "tenista-europa.jpg",
 
         "cuerpo": "El jugador polaco de 36 años se hizo con la Copa la semana pasada luego de su encuentro con Igor Dombdeer, el cual ganó con un puntaje de tres sets a dos.\nIncluso tras su victoria, muchos expertos comienzan a notar cierto declive en desempeño del tenista. \"Tras once años de carrera, creo que los años de gloria de Dwadsky están contados\" — comenta un relator famoso de su país."
     },
     {
         "titulo": "Tarta de verduras: consejos sacados de la cocina árabe para que quede impresionante",
-        "categorias": [2, 5],
+        "categorias": [11, 41],
         "portada": "tarta-verduras.jpg",
 
         "cuerpo": "La tarta de verduras es un plato muy popular en nuestro país, ideal tanto para días pesados como para noches frías. Pero otro lugar en el que también es ampliamente degustada es en la cocina árabe, donde las recetas con masa horneada son el pan de cada día. En esta nota te compartimos algunos consejos de su cultura para que tus tartas salgan aún mejor.\nUna de las costumbres más comunes a la hora de hacer masa árabe es condimentar la propia masa con especias y aromatizantes. Aunque pareza una locura, ya que en nuestro país esta costumbre apenas es conocida, es un pilar fundamental de sus platillos. Añadirle sabor a la propia masa ayuda a complementar los sabores del relleno, sin interferir.\nOtra gran técnica de esas regiones consiste en usar un tipo especial de masa conocido como masa quiché. Ésta tiene la particularidad de ser algo menos maleable, lo que hace más dificultoso el proceso de amasado, pero a cambio le da al producto final una consistencia única."
     },
     {
         "titulo": "La reconocida escritora Ymir Galler anuncia la próxima entrega de su galardonada saga, La Ciudad de los Malditos",
-        "categorias": [4, 5],
+        "categorias": [31, 41],
         "portada": "escritora.jpg",
 
         "cuerpo": "La autora de la saga besteller de Noruega, La Ciudad de los Malditos, tiene planes de continuar su más exitosa obra. En una reciente entrevista con un medio de su país, anunció que la séptima entrega de su colección está en proceso y muy cerca de ser acabada.\nLa escritora nos prepara para el lanzamiento comentando que \"esta entrega responder a muchas de las preguntas más importantes de la saga\". Los fans de la serie de libros especulan que es muy probable que el próximo lanzamiento finalmente resuelva el misterio acerca de quién es el verdadero padre del protagonista."
     },
     {
         "titulo": "La ciudad de Ámsterdam organiza una Feria de la Estación para celebrar la llegada del otoño",
-        "categorias": [1, 4, 5],
+        "categorias": [1, 31, 41],
         "portada": "amsterdam-otono.jpg",
 
         "cuerpo": "Como es costumbre en la capital holandesa, con el motivo de la pronta llegada del otoño al hemisferio norte el gobierno municipal hace los preparativos para su reconocida Feria de la Estación.\nEl evento toma lugar en el Rembrandtplein,, una de las plazas más populares de la urbe. Con atracciones, comida local, eventos de teatro gratuitos y actividades temáticas para los más pequeños, la Feria de la Estación promete diversión para toda la familia. La celebración estará abierta al público desde el Lunes 10 al Viernes 21 de 8 de la mañana a 6 de la tarde."
     },
     {
         "titulo": "Empresa filipina lanza al mercado el primer robot chef autónomo",
-        "categorias": [2, 5, 6],
+        "categorias": [11, 41, 51],
         "portada": "robot-chef.jpg",
 
         "cuerpo": "La empresa Leotronics, una startup basada en Manila, lanzó el mes pasado el primer modelo de robot capaz de trabajar en una cocina sin asistencia humana. El LeoChef es capaz de preparar más de mil comidas distintas, con tan solo los ingredientes y acceso a una cocina convencional.\nLa CEO de la empresa, Kim Ritsky, cuenta que para poder lograr que el robot aprenda a cocinar desarrollaron una inteligencia artificial que analizó la técnica de cientos de los chefs más reconocidos del mundo. \"Fue un verdadero desafío, pero creemos que el producto final es realmente sólido, y que marcará un hito en la historia de la robótica\" — comenta la ejecutiva en un comunicado de prensa.\nPor el momento se prevee que esta tecnología solo será accesible para las cadenas gastronómicas más prestigiosas, debido a su elevado coste: el precio de una unidad supera los 150.000 dólares. \"Aunque por el momento el coste del LeoChef lo restringa exclusivamente a locales de alto caché, nuestro plan es abaratar los costes de producción para acercar esta tecnología al uso doméstico\" — anuncia la presidenta."
     },
     {
         "titulo": "El conductor de televisión Ricardo Arlede anuncia su jubilación",
-        "categorias": [4],
+        "categorias": [31],
         "portada": "conductor-television.jpg",
 
-        "cuerpo": "El popular conductor de programas de entretenimiento televisivo, Ricardo Arlede, anunció su salida de La Yapa, el programa que dirige desde hace 4 años. Conocido por la mayoría debido a su conducción en éxitos como Un Chiste Más o Toc-Toc, Arlede hizo reír a generaciones enteras durante sus más de cincuenta años de carrera.\nArlede comunicó la noticia por sus redes sociales, indicando que su jubilación se debe a temas de salud. \"Aunque ya no pueda seguir haciendo lo que amo, estoy feliz de haber podido hacer reír a tantas personas, y nunca olvidaré los hermosos momentos que tuve en la televisión\" — dice emocionado durante su comunicado."
+        "cuerpo": "El popular conductor de programas de entretenimiento televisivo, Ricardo Arlede, anunció su salida de La Yapa, el programa que dirige desde hace cuatro años. Conocido por la mayoría debido a su conducción en éxitos como Un Chiste Más o Toc-Toc, Arlede hizo reír a generaciones enteras durante sus más de cincuenta años de carrera.\nArlede comunicó la noticia por sus redes sociales, indicando que su jubilación se debe a temas de salud. \"Aunque ya no pueda seguir haciendo lo que amo, estoy feliz de haber podido hacer reír a tantas personas, y nunca olvidaré los hermosos momentos que tuve en la televisión\" — dice emocionado durante su comunicado."
     },
     {
         "titulo": "La política Ylers Yterenne ganó las elecciones presidenciales de Romania",
-        "categorias": [5],
+        "categorias": [41],
         "portada": "politica-romania.jpg",
 
-        "cuerpo": "Las elecciones presidenciales del pasado Martes en Romania culminaron con la victoria de la representante del Partido por la Libertad. Su asunción será el 3 de Febrero del año próximo,y pasará a ser la primer mujer en asumir el cargo.\nLa noticia fue celebrada en la congregación de su partido, donde dió un discurso por la ocasión: \"Esta es una enorme oportunidad para mí, y daré todo de mí para apoyar al partido y a mi país\" — comenta emocionada."
+        "cuerpo": "Las elecciones presidenciales del pasado Martes en Romania culminaron con la victoria de la representante del Partido por la Libertad. Su asunción será el 30 de Diciembre del año próximo,y pasará a ser la primer mujer en asumir el cargo.\nLa noticia fue celebrada en la congregación de su partido, donde dió un discurso por la ocasión: \"Esta es una enorme oportunidad para mí, y daré todo de mí para apoyar al partido y a mi país\" — comenta emocionada."
     },
     {
         "titulo": "La aplicación del momento SensaMe ya alcanzó las cincuenta millones de cuentas activas",
-        "categorias": [6],
+        "categorias": [51],
         "portada": "sensame.jpg",
 
         "cuerpo": "La aplicación de cuidado personal es furor en Europa y Asia, donde su número de afiliados no ha dejado de crecer hasta alcanzar la cifra actual de cincuenta millones.\nLa plataforma SensaMe se hizo tan popular por su tan novedosa utilidad; la aplicación sirve como una especie de diario personal, donde anotar el estado de ánimo que se siente en cada momento del día. La aplicación aprende de la información suministrada, y luego propone formas de ayudar a controlar las emociones como enojo, frustración y desesperación cuando ocurren.\nLa principal razón de su reputación, sin embargo, se debe al enfoque pasivo y seguro que la aplicación tiene: \"no demanda información nunca, SensaMe aprende de ti a tu propio ritmo, sin presionarte jamás. Claro está también que la información personal brindada es absolutamente confidencial, nadie más que tu puede ver lo que escribes\" — asegura Carl Doe, el CEO de la empresa detrás de la plataforma."
