@@ -44,8 +44,8 @@
 		</div>
 	</div>
 	
-	<div class="mt-4 flex justify-center">
-		<img src="{{$publicacion->portada != null ? "/storage/publicaciones/" . $publicacion->portada : "/assets/sinportada.png"}}" alt="Imagen de publicación" class="{{$publicacion->portada != null ? "" : "hidden"}}">
+	<div class="max-w-screen-sm mx-auto mt-4 flex justify-center">
+		<img src="{{$publicacion->portada != null ? "/storage/publicaciones/" . $publicacion->portada : "/assets/sinportada.png"}}" alt="Imagen de publicación" class="{{$publicacion->portada != null ? "" : "hidden"}} rounded-xl">
 	</div>
 	
 	<div class="mt-4 flex flex-col gap-4">
