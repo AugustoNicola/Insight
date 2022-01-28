@@ -1,1 +1,1 @@
-php artisan db:seed
+yes | php artisan db:seed
