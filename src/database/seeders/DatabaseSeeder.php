@@ -30,18 +30,16 @@ class DatabaseSeeder extends Seeder
         $publicaciones = json_decode(file_get_contents(database_path("datos/Publicaciones.json"), true));
         $comentarios = json_decode(file_get_contents(database_path("datos/Comentarios.json"), true));
 
-        $usuariesCreades = [];
         $categoriasCreadas = [];
+        $publicacionesCreadas = [];
 
         foreach ($usuaries as $usuarie) {
             Storage::put("/public/usuaries/" . $usuarie->imagen, File::get(database_path("datos/usuaries/" . $usuarie->imagen)));
 
-            $usuarieCreade = Models\Usuarie::factory()->create([
+            Models\Usuarie::factory()->create([
                 "nombre" => $usuarie->nombre,
                 "imagen" => $usuarie->imagen
             ]);
-
-            array_push($usuariesCreades, $usuarieCreade);
         }
 
         foreach ($categorias as $categoria) {
@@ -68,11 +66,13 @@ class DatabaseSeeder extends Seeder
             }
 
             $publicacionCreada->reacciones()->attach(Models\Usuarie::all()->random(rand(1, 7))->pluck('id')->toArray(), ["relacion" => Arr::random(["me_gusta", "guardar"])]);
+
+            array_push($publicacionesCreadas, $publicacionCreada);
         }
 
         foreach ($comentarios as $comentario) {
             Models\Comentario::factory()->usuarieExistente()->create([
-                "publicacion_id" => $comentario->publicacion,
+                "publicacion_id" => $publicacionesCreadas[$comentario->publicacion - 1]->id,
                 "cuerpo" => $comentario->cuerpo
             ]);
         }
