@@ -30,20 +30,27 @@ class DatabaseSeeder extends Seeder
         $publicaciones = json_decode(file_get_contents(database_path("datos/Publicaciones.json"), true));
         $comentarios = json_decode(file_get_contents(database_path("datos/Comentarios.json"), true));
 
+        $usuariesCreades = [];
+        $categoriasCreadas = [];
+
         foreach ($usuaries as $usuarie) {
             Storage::put("/public/usuaries/" . $usuarie->imagen, File::get(database_path("datos/usuaries/" . $usuarie->imagen)));
 
-            Models\Usuarie::factory()->create([
+            $usuarieCreade = Models\Usuarie::factory()->create([
                 "nombre" => $usuarie->nombre,
                 "imagen" => $usuarie->imagen
             ]);
+
+            array_push($usuariesCreades, $usuarieCreade);
         }
 
         foreach ($categorias as $categoria) {
-            Models\Categoria::factory()->create([
+            $categoriaCreada =  Models\Categoria::factory()->create([
                 "nombre" => $categoria->nombre,
                 "descripcion" => $categoria->descripcion
             ]);
+
+            array_push($categoriasCreadas, $categoriaCreada);
         }
 
         foreach ($publicaciones as $publicacion) {
@@ -57,8 +64,9 @@ class DatabaseSeeder extends Seeder
             ]);
 
             foreach ($publicacion->categorias as $categoria) {
-                $publicacionCreada->categorias()->attach(Models\Categoria::find($categoria));
+                $publicacionCreada->categorias()->attach($categoriasCreadas[$categoria - 1]->id);
             }
+
             $publicacionCreada->reacciones()->attach(Models\Usuarie::all()->random(rand(1, 7))->pluck('id')->toArray(), ["relacion" => Arr::random(["me_gusta", "guardar"])]);
         }
 
