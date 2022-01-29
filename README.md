@@ -15,6 +15,10 @@ Insight es una aplicación full-stack para leer y escribir notas de blog, con fu
 
 Tanto el *frontend* como *backend* están hechos con el framework de PHP, [Laravel](https://laravel.com/docs/8.x) `v.8.81.0`, conectado a una base de datos [MySQL](https://www.mysql.com/). El *frontend* utiliza además [TailwindCSS](https://tailwindcss.com/docs/) para los estilos CSS.
 
+Para realizar gran parte del código usé la metodología de TDD (*Test-Driven Development*), que implica crear las pruebas a pasar antes que el código en sí. Estas pruebas están disponibles en `tests/Feature` y pueden ser ejecutadas con el comando de artisan: `php artisan test`.
+
+Debido a las [limitaciones del hosting gratuito de Heroku](https://devcenter.heroku.com/articles/active-storage-on-heroku#ephemeral-disk) que no permiten almacenar archivos en el disco del Dyno, es imposible mantener las imágenes cargadas por usuaries. Mi solución para poder seguir usando este hosting es el de seedear la base de datos al reiniciarse el Dyno (después de un período de inactividad) con `php artisan db:seed`. De esta forma les usuaries pueden usar la página con todas las funcionalidades mientras el Dyno siga activo.
+
 <br />
 
 # Contribuciones y Licencia
