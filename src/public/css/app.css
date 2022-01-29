@@ -495,9 +495,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .aspect-video {
   aspect-ratio: 16 / 9;
 }
-.aspect-\[12\/9\] {
-  aspect-ratio: 12 / 9;
-}
 .h-full {
   height: 100%;
 }
@@ -564,12 +561,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .max-w-md {
   max-width: 28rem;
-}
-.max-w-screen-lg {
-  max-width: 1024px;
-}
-.max-w-screen-md {
-  max-width: 768px;
 }
 .max-w-screen-sm {
   max-width: 640px;
@@ -776,11 +767,18 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-center {
   background-position: center;
 }
+.object-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 .p-4 {
   padding: 1rem;
 }
 .p-1 {
   padding: 0.25rem;
+}
+.p-2 {
+  padding: 0.5rem;
 }
 .py-2 {
   padding-top: 0.5rem;
@@ -823,6 +821,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .pt-2 {
   padding-top: 0.5rem;
+}
+.pr-2 {
+  padding-right: 0.5rem;
+}
+.pr-1 {
+  padding-right: 0.25rem;
 }
 .text-center {
   text-align: center;

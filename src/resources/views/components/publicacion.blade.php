@@ -1,8 +1,8 @@
 <div class="my-4 lg:my-0 flex flex-row flex-nowrap gap-3 rounded-lg bg-primariopastel">
     <a href="/publicaciones/{{$publicacion->id}}" class="basis-1/4 flex-none border-r-2 border-negro rounded-l-lg">
-        <img src="{{$publicacion->portada != null ? "/storage/publicaciones/" . $publicacion->portada : "/assets/sinportada.png"}}" alt="Imagen de publicación" class="h-full aspect-square rounded-l-lg hover:brightness-105" >
+        <img src="{{$publicacion->portada != null ? "/storage/publicaciones/" . $publicacion->portada : "/assets/sinportada.png"}}" alt="Imagen de publicación" class="h-full w-full object-cover rounded-l-lg hover:brightness-105" >
     </a>
-    <div class="grow py-2 flex flex-col flex-nowrap justify-around items-start">
+    <div class="grow py-2 pr-1 flex flex-col flex-nowrap justify-around items-start">
         <a class="font-titulo font-medium text-negro hover:text-negrohover text-lg md:text-xl" href="/publicaciones/{{$publicacion->id}}">{{$publicacion->titulo}}</a>
         <div class="flex flex-row flex-wrap justify-start items-center gap-2">
             @foreach($publicacion->categorias()->get() as $categoria)
