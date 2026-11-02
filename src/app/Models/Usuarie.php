@@ -27,6 +27,12 @@ class Usuarie extends Model implements AuthenticatableContract
         return $this->contrasena;
     }
 
+    # Laravel 11+ usa este nombre de columna al re-hashear la contrasena al iniciar sesion
+    public function getAuthPasswordName()
+    {
+        return "contrasena";
+    }
+
     # las publicaciones escritos por este usuarie
     public function publicaciones()
     {
